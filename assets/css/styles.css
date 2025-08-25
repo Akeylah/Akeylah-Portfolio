@@ -467,16 +467,20 @@ body.light-theme {
 }
 
 .about__title {
-  font-size: var(--small-font-size);
+  font-size: var(--medium-font-size);
 }
 
 .about__subtitle {
-  font-size: var(--tiny-font-size);
+  font-size: var(--small-font-size);
 }
 
 .about__description {
   margin-bottom: 2rem;
 }
+
+
+
+/*=============== EDUCATION SECTION ===============*/
 
 /*=============== SKILLS ===============*/
 .skills__container {
