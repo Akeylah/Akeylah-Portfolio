@@ -231,3 +231,40 @@ sr.reveal(`.footer, footer__container`, {
   origin: "bottom",
   distance: "30px",
 });
+
+sr.reveal(`#education .section-header`, {
+  origin: 'top',
+  distance: '50px',
+  duration: 2000,
+  delay: 200,
+  scale: 0.9,
+});
+
+// Reveal each timeline item
+sr.reveal(`.timeline-item`, {
+  origin: 'bottom',
+  distance: '50px',
+  duration: 2000,
+  delay: 200,
+  interval: 200, // stagger effect
+});
+
+
+// Reveal timeline items on scroll
+const timelineItems = document.querySelectorAll(".timeline-item");
+
+const observer = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target); // optional: reveal only once
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+timelineItems.forEach(item => {
+  observer.observe(item);
+});

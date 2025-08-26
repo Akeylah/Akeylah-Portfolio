@@ -49,6 +49,12 @@
                     </li>
 
                     <li class="nav__item">
+                        <a href="#education" class="nav__link">
+                        <i class="bx bx-book-reader"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
                         <a href="#skills" class="nav__link">
                             <i class='bx bx-book'></i>
                         </a>
@@ -57,6 +63,12 @@
                     <li class="nav__item">
                         <a href="#work" class="nav__link">
                             <i class='bx bx-briefcase-alt-2'></i>
+                        </a>
+                    </li>
+
+                     <li class="nav__item">
+                        <a href="#services" class="nav__link">
+                            <i class='bx bx-certification'></i>
                         </a>
                     </li>
 
@@ -156,7 +168,46 @@ of tech related solutions, along with growing knowledge in cybersecurity and clo
 
 
         <!--=============== Education ===============-->
+<!--=============== Education ===============-->
+<section id="education" class="section-with-icon">
+  <div class="section-header">
+    <i class="fas fa-graduation-cap section-icon"></i>
+    <h2>Education</h2>
+  </div>
 
+  <div class="section-content">
+    <div class="timeline">
+      
+      <!-- Timeline item -->
+      <div class="timeline-item">
+        <div class="timeline-date">2022 - Present</div>
+        <div class="timeline-content">
+          <h3>Associate Degree in Information Technology</h3>
+          <span class="institution">University of Belize</span>
+          <ul>
+            <li>Data cleaning, analysis, and visualization</li>
+            <li>SQL, R programming, Tableau</li>
+            <li>Expected completion: 2026</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Timeline item -->
+      <div class="timeline-item">
+        <div class="timeline-date">2018 - 2022</div>
+        <div class="timeline-content">
+          <h3>High School Diploma</h3>
+          <span class="institution">Belmopan Comprehensive Highschool</span>
+          <ul>
+            <li>GPA: 4.0</li>
+            <li>IT coursework: Raspberry Pi, graphic design, and data analysis</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- Font Awesome for icons -->
 <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
@@ -299,8 +350,76 @@ of tech related solutions, along with growing knowledge in cybersecurity and clo
                 </div>
         </section>
 
+
+        <!--=============== WORK ===============-->
+        <section class="work section" id="work">
+            <span class="section__subtitle">My Creations</span>
+            <h2 class="section__title">Recent Works</h2>
+
+            <div class="work__filters">
+                <span class="work__item active-work" data-filter='all'>All</span>
+                <span class=" work__item" data-filter='.web'>Websites</span>
+                <span class=" work__item" data-filter='.movil'>Projects</span>
+                <span class=" work__item" data-filter='.design'>Design </span>
+            </div>
+
+            <div class="work__container container grid">
+                <div class="work__card mix web">
+                    <img src="assets/img/work1.jpg" alt="" class="work__img">
+
+                    <h3 class="work__title">Web Design</h3>
+
+                    <a href="#" class="work__button">
+                        Demo <i class='bx bx-right-arrow work__icon'></i>
+                    </a>
+                </div>
+
+                <div class="work__card mix movil">
+                    <img src="assets/img/work2.jpg" alt="" class="work__img">
+
+                    <h3 class="work__title">App Movil</h3>
+
+                    <a href="#" class="work__button">
+                        Demo <i class='bx bx-right-arrow work__icon'></i>
+                    </a>
+                </div>
+
+                <div class="work__card mix design">
+                    <img src="assets/img/work3.jpg" alt="" class="work__img">
+
+                    <h3 class="work__title">Brand Design</h3>
+
+                    <a href="#" class="work__button">
+                        Demo <i class='bx bx-right-arrow work__icon'></i>
+                    </a>
+                </div>
+
+                <div class="work__card mix web">
+                    <img src="assets/img/work4.jpg" alt="" class="work__img">
+
+                    <h3 class="work__title">Web Design</h3>
+
+                    <a href="#" class="work__button">
+                        Demo <i class='bx bx-right-arrow work__icon'></i>
+                    </a>
+                </div>
+
+                <div class="work__card mix movil">
+                    <img src="assets/img/work5.jpg" alt="" class="work__img">
+
+                    <h3 class="work__title">App Movil</h3>
+
+                    <a href="#" class="work__button">
+                        Demo <i class='bx bx-right-arrow work__icon'></i>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+
         <!--=============== SERVICES ===============-->
-        <section class="services section">
+        <section class="services section" id="services">
             <span class="section__subtitle">My Services</span>
             <h2 class="section__title">What I Offer</h2>
 
@@ -366,7 +485,7 @@ of tech related solutions, along with growing knowledge in cybersecurity and clo
                     </div>
                 </div>
 
-                <div class="services__card">
+                <div class="services__card" >
                     <h3 class="services__title">UI/UX <br> Designing</h3>
 
                     <span class="services__button">
@@ -484,114 +603,8 @@ of tech related solutions, along with growing knowledge in cybersecurity and clo
             </div>
         </section>
 
-        <!--=============== WORK ===============-->
-        <section class="work section" id="work">
-            <span class="section__subtitle">My Creations</span>
-            <h2 class="section__title">Recent Works</h2>
-
-            <div class="work__filters">
-                <span class="work__item active-work" data-filter='all'>All</span>
-                <span class=" work__item" data-filter='.web'>Websites</span>
-                <span class=" work__item" data-filter='.movil'>Projects</span>
-                <span class=" work__item" data-filter='.design'>Design </span>
-            </div>
-
-            <div class="work__container container grid">
-                <div class="work__card mix web">
-                    <img src="assets/img/work1.jpg" alt="" class="work__img">
-
-                    <h3 class="work__title">Web Design</h3>
-
-                    <a href="#" class="work__button">
-                        Demo <i class='bx bx-right-arrow work__icon'></i>
-                    </a>
-                </div>
-
-                <div class="work__card mix movil">
-                    <img src="assets/img/work2.jpg" alt="" class="work__img">
-
-                    <h3 class="work__title">App Movil</h3>
-
-                    <a href="#" class="work__button">
-                        Demo <i class='bx bx-right-arrow work__icon'></i>
-                    </a>
-                </div>
-
-                <div class="work__card mix design">
-                    <img src="assets/img/work3.jpg" alt="" class="work__img">
-
-                    <h3 class="work__title">Brand Design</h3>
-
-                    <a href="#" class="work__button">
-                        Demo <i class='bx bx-right-arrow work__icon'></i>
-                    </a>
-                </div>
-
-                <div class="work__card mix web">
-                    <img src="assets/img/work4.jpg" alt="" class="work__img">
-
-                    <h3 class="work__title">Web Design</h3>
-
-                    <a href="#" class="work__button">
-                        Demo <i class='bx bx-right-arrow work__icon'></i>
-                    </a>
-                </div>
-
-                <div class="work__card mix movil">
-                    <img src="assets/img/work5.jpg" alt="" class="work__img">
-
-                    <h3 class="work__title">App Movil</h3>
-
-                    <a href="#" class="work__button">
-                        Demo <i class='bx bx-right-arrow work__icon'></i>
-                    </a>
-                </div>
-
-            </div>
-        </section>
-
-        <!--=============== TESTIMONIALS ===============-->
-        <section class="testimonial section">
-            <span class="section__subtitle">My clients say</span>
-            <h2 class="section__title">Testimonials</h2>
-
-            <div class="testimonial__container container swiper">
-                <div class="swiper-wrapper">
-                    <div class="testimonial__card swiper-slide">
-                        <img src="assets/img/testimonial1.png" alt="" class="testimonial__img">
-
-                        <h3 class="testimonial__name">Jhon Doe</h3>
-                        <p class="testimonial__description">
-                            A really good job, all aspects of the project were done well.
-                            Very creative and thoughtful. I was very impressed and would recommend this to anyone.
-                        </p>
-                    </div>
-
-                    <div class="testimonial__card swiper-slide">
-                        <img src="assets/img/testimonial2.png" alt="" class="testimonial__img">
-
-                        <h3 class="testimonial__name">Ada Hill</h3>
-                        <p class="testimonial__description">
-                            A really good job, all aspects of the project were done well.
-                            Very creative and thoughtful. I was very impressed and would recommend this to anyone.
-                        </p>
-                    </div>
-
-                    <div class="testimonial__card swiper-slide">
-                        <img src="assets/img/testimonial3.png" alt="" class="testimonial__img">
-
-                        <h3 class="testimonial__name">Jessica Park</h3>
-                        <p class="testimonial__description">
-                            A really good job, all aspects of the project were done well.
-                            Very creative and thoughtful. I was very impressed and would recommend this to anyone.
-                        </p>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-
-        </section>
-
+        
+      
         <!--=============== CONTACT ===============-->
         <section class="contact section" id="contact">
             <h3 class="section__title">Contact Me</h3>
