@@ -1,12 +1,12 @@
-/*=============== CHANGE BACKGROUND HEADER ===============*/
-function scrollHeader() {
-  const header = document.getElementById("header");
-  if (window.scrollY >= 50) {
-    header.classList.add("scroll-header");
-  } else {
-    header.classList.remove("scroll-header");
-  }
+/*=============== CHANGE HEADER BACKGROUND ON SCROLL ===============*/
+function scrollHeader(){
+  const header = document.getElementById('header');
+  if(this.scrollY >= 50) header.classList.add('scroll-header'); 
+  else header.classList.remove('scroll-header');
 }
+window.addEventListener('scroll', scrollHeader);
+
+
 /*=============== SERVICES MODAL ===============*/
 // Get the modal
 const modalViews = document.querySelectorAll(".services__modal"),
