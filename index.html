@@ -30,61 +30,43 @@
 
 <body>
     <!--=============== HEADER ===============-->
-    <header class="header" id="header">
-        <nav class="nav container">
-            <a href="#" class="nav__logo">Portfolio</a>
+<header class="header" id="header">
+  <nav class="nav">
+    <!-- Left -->
+    <a href="#" class="nav__logo">Portfolio</a>
 
-            <div class="nav__menu">
-                <ul class="nav__list">
-                    <li class="nav__item ">
-                        <a href="#home" class="nav__link">
-                            <i class='bx bx-home'></i>
-                        </a>
-                    </li>
+    <!-- Center (pill nav) -->
+    <div class="nav__menu">
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a href="#home" class="nav__link"><i class='bx bx-home'></i></a>
+        </li>
+        <li class="nav__item">
+          <a href="#about" class="nav__link"><i class='bx bx-user'></i></a>
+        </li>
+        <li class="nav__item">
+          <a href="#education" class="nav__link"><i class="bx bx-book-reader"></i></a>
+        </li>
+        <li class="nav__item">
+          <a href="#skills" class="nav__link"><i class='bx bx-book'></i></a>
+        </li>
+        <li class="nav__item">
+          <a href="#work" class="nav__link"><i class='bx bx-briefcase-alt-2'></i></a>
+        </li>
+        <li class="nav__item">
+          <a href="#certifications" class="nav__link"><i class='bx bx-certification'></i></a>
+        </li>
+        <li class="nav__item">
+          <a href="#contact" class="nav__link"><i class='bx bx-message-square-dots'></i></a>
+        </li>
+      </ul>
+    </div>
 
-                    <li class="nav__item ">
-                        <a href="#about" class="nav__link">
-                            <i class='bx bx-user'></i>
-                        </a>
-                    </li>
+    <!-- Right -->
+    <i class='bx bx-moon change-theme change-theme-button' id="theme-button"></i>
+  </nav>
+</header>
 
-                    <li class="nav__item">
-                        <a href="#education" class="nav__link">
-                        <i class="bx bx-book-reader"></i>
-                        </a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="#skills" class="nav__link">
-                            <i class='bx bx-book'></i>
-                        </a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="#work" class="nav__link">
-                            <i class='bx bx-briefcase-alt-2'></i>
-                        </a>
-                    </li>
-
-                     <li class="nav__item">
-                        <a href="#services" class="nav__link">
-                            <i class='bx bx-certification'></i>
-                        </a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="#contact" class="nav__link">
-                            <i class='bx bx-message-square-dots'></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <!--=============== theme change button ===============-->
-            <i class='bx bx-moon change-theme change-theme-button' id="theme-button"></i>
-
-        </nav>
-    </header>
 
     <!--=============== MAIN ===============-->
     <main class="main">
@@ -97,7 +79,7 @@
                     <h3 class="home__education">Computer Science Student</h3>
 
                     <div class="home__button">
-                        <a download="" href="assets/pdf/hailee-Cv.pdf" class="button button--ghost">
+                        <a download="" href="assets/pdf/AkeylahCV.pdf" class="button button--ghost">
                         Download Resume
                         </a>
 
@@ -429,78 +411,81 @@ of tech related solutions, along with growing knowledge in cybersecurity and clo
 
     <!-- Cisco Certification Tile -->
     <div class="certification-tile">
-      <div class="tile-header">
-        <img src="./assets/img/Cisco_logo_blue_2016.svg.png" alt="Cisco Logo" class="cert-logo">
-        <div class="tile-title">
-          <h3>Computer Hardware Basics</h3>
-          <p class="certification-meta">
-            <span class="org">Cisco Networking Academy</span>
-            <span class="date">May 2025</span>
-          </p>
-        </div>
-      </div>
+  <div class="tile-header">
+    <img src="./assets/img/Cisco_logo_blue_2016.svg.png" alt="Cisco Logo" class="cert-logo">
+    <div class="tile-title">
+      <h3>Computer Hardware Basics</h3>
+      <p class="certification-meta">
+        <span class="org">Cisco Networking Academy</span>
+        <span class="date">- May 2025</span>
+      </p>
+    </div>
+  </div>
 
-      <div class="tile-body">
-        <p class="certification-desc">
-          Fundamental knowledge of computers and mobile devices, including installation, 
-          repair, upgrading, and basic troubleshooting techniques.
-        </p>
+  <div class="tile-body">
+    <p class="certification-desc">
+      Fundamental knowledge of computers and mobile devices<br>including installation, 
+      repair, upgrading, and basic troubleshooting techniques.
+    </p>
 
-        <div class="badges-section">
-          <h4>Credentials:</h4>
-          <div class="badges-grid">
-            <div class="credential-box">
-              <a href="https://drive.google.com/uc?export=download&id=1rAuPdaR6DLYV7u3Kw8J1u-aFXKDysoQL" download="Keylah_CHB_Certificate.pdf">
-                <div class="credential-icon">
-                  <i class="fas fa-file-pdf"></i>
-                </div>
-                <div class="credential-info">
-                  <span class="credential-name">Official Certificate</span>
-                  <span class="credential-format">PDF Download</span>
-                </div>
-              </a>
+    <div class="badges-section">
+      <h4>Credentials:</h4>
+      <div class="badges-grid">
+        <div class="credential-box">
+          <a href="https://drive.google.com/uc?export=download&id=1rAuPdaR6DLYV7u3Kw8J1u-aFXKDysoQL" download="Keylah_CHB_Certificate.pdf">
+            <div class="credential-icon">
+              <i class="fas fa-file-pdf"></i>
             </div>
-
-            <div class="credential-box">
-              <a href="https://www.credly.com/badges/6bce5f9f-afc3-40de-8eb8-045751c3838d" target="_blank">
-                <div class="credential-icon">
-                  <img src="/assets/img/Screenshot 2025-08-27 013237.png" alt="CCNA Badge">
-                </div>
-                <div class="credential-info">
-                  <span class="credential-name">Digital Badge</span>
-                  <span class="credential-format">View on Credly</span>
-                </div>
-              </a>
+            <div class="credential-info">
+              <span class="credential-name">Official Certificate</span>
+              <span class="credential-format">PDF Download</span>
             </div>
-          </div>
+          </a>
         </div>
-      </div>
 
-      <div class="tile-footer">
-        <a href="https://www.netacad.com/courses/computer-hardware-basics" target="_blank" class="course-link">
-          <i class="fas fa-external-link-alt"></i> Course Details
-        </a>
+        <div class="credential-box">
+          <a href="https://www.credly.com/badges/6bce5f9f-afc3-40de-8eb8-045751c3838d" target="_blank">
+            <div class="credential-icon">
+              <img src="/assets/img/Screenshot 2025-08-27 013237.png" alt="CCNA Badge">
+            </div>
+            <div class="credential-info">
+              <span class="credential-name">Digital Badge</span>
+              <span class="credential-format">View on Credly</span>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
+  </div>
 
-    <!-- VMware Certification Tile -->
+  <div class="tile-footer">
+    <div class="certificate-icon">
+      <i class="fas fa-award"></i>
+    </div>
+    <a href="https://www.netacad.com/courses/computer-hardware-basics" target="_blank" class="course-link">
+      <i class="fas fa-external-link-alt"></i> Course Details
+    </a>
+  </div>
+</div>
+
+    <!-- ET Certification Tile -->
     <div class="certification-tile">
       <div class="tile-header">
         <img src="./assets/img/Cisco_logo_blue_2016.svg.png" alt="VMware Logo" class="cert-logo">
         <div class="tile-title">
-          <h3>VMware Certified Professional</h3>
+          <h3>Ethical Hacker</h3>
           <p class="certification-meta">
-            <span class="org">VMware</span>
-            <span class="date">Mar 2024</span>
+            <span class="org">Cisco Networking Academy</span>
+            <span class="date">- In Progress</span>
           </p>
         </div>
       </div>
 
       <div class="tile-body">
         <p class="certification-desc">
-          Demonstrated skills in virtualization technologies, including deployment, configuration, and management of VMware solutions.
+         Learn the art of offensive security to uncover cyber threats and vulnerabilities.
         </p>
-
+    <!--
         <div class="badges-section">
           <h4>Credentials:</h4>
           <div class="badges-grid">
@@ -529,10 +514,10 @@ of tech related solutions, along with growing knowledge in cybersecurity and clo
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
 
       <div class="tile-footer">
-        <a href="https://www.vmware.com/certification" target="_blank" class="course-link">
+        <a href="https://www.netacad.com/courses/ethical-hacker?courseLang=en-US" target="_blank" class="course-link">
           <i class="fas fa-external-link-alt"></i> Course Details
         </a>
       </div>
