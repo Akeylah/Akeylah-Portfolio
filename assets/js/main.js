@@ -1,11 +1,18 @@
 /*=============== CHANGE HEADER BACKGROUND ON SCROLL ===============*/
-function scrollHeader(){
-  const header = document.getElementById('header');
-  if(this.scrollY >= 50) header.classList.add('scroll-header'); 
-  else header.classList.remove('scroll-header');
-}
-window.addEventListener('scroll', scrollHeader);
+function scrollHeader() {
+  const header = document.querySelector('.header');
+  const navMenu = document.querySelector('.nav__menu');
 
+  if (window.scrollY > 50) {      // adjust scroll threshold if needed
+    header.classList.add('scroll-header');
+    navMenu.classList.add('scroll-header'); // triggers bottom float
+  } else {
+    header.classList.remove('scroll-header');
+    navMenu.classList.remove('scroll-header'); // return to top
+  }
+}
+
+window.addEventListener('scroll', scrollHeader);
 
 /*=============== SERVICES MODAL ===============*/
 // Get the modal
@@ -146,17 +153,15 @@ themeButton.addEventListener("click", () => {
 /*=============== SCROLL REVEAL ANIMATION ===============*/
 const sr = ScrollReveal({
   origin: "top",
-  distance: "60px",
-  duration: 2500,
+  distance: "30px",
+  duration: 1500,
   delay: 400,
-  reset: true,
+  reset: false,
 });
 
 sr.reveal(`.nav__menu`, {
-  delay: 100,
+   opacity: 0,
   scale: 0.1,
-  origin: "bottom",
-  distance: "300px",
 });
 
 sr.reveal(`.home__data`);
