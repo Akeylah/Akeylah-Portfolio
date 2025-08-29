@@ -195,6 +195,9 @@ sr.reveal(`.skills__content`, {
   distance: "30px",
 });
 
+
+
+
 sr.reveal(`.services__title, services__button`, {
   delay: 100,
   scale: 0.9,
@@ -209,12 +212,19 @@ sr.reveal(`.work__card`, {
   distance: "30px",
 });
 
-sr.reveal(`.testimonial__container`, {
+sr.reveal(`.certification-tile`, {
   delay: 100,
   scale: 0.9,
   origin: "bottom",
   distance: "30px",
 });
+
+/*sr.reveal(`.testimonial__container`, {
+  delay: 100,
+  scale: 0.9,
+  origin: "bottom",
+  distance: "30px",
+});*/
 
 sr.reveal(`.contact__info, .contact__title-info`, {
   delay: 100,
@@ -272,4 +282,17 @@ const observer = new IntersectionObserver(
 
 timelineItems.forEach(item => {
   observer.observe(item);
+});
+
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
+    .then(() => {
+      alert("✅ Message sent successfully!");
+      this.reset(); // clear form
+    }, (error) => {
+      alert("❌ Failed to send message. Try again later.");
+      console.error("EmailJS Error:", error);
+    });
 });

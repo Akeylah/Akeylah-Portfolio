@@ -85,30 +85,47 @@
 
 
 
-    <!--=============== MAIN ===============-->
-    <main class="main">
-        <!--=============== HOME ===============-->
-        <section class="home section" id="home">
-            <div class="home__container container grid">
-                <div class="home__data">
-                    <span class="home__greeting">Hi, my name is </span>
-                    <h1 class="home__name">Akeylah Hernandez</h1>
-                    <h3 class="home__education">Computer Science Student</h3>
+ <!--=============== MAIN ===============-->
+<main class="main">
+  <!--=============== HOME ===============-->
+  <section class="home section" id="home">
+    <div class="home__container container grid">
 
-                    <div class="home__button">
-                        <a download="" href="assets/pdf/AkeylahCV.pdf" class="button button--ghost">
-                        Download Resume
-                        </a>
+      <!-- Left side: text -->
+      <div class="home__data">
+        <span class="home__greeting">Hi, my name is </span>
+        <h1 class="home__name">Akeylah Hernandez</h1>
+        <h3 class="home__education">Computer Science Student</h3>
 
-                        <a href="#about" class="button">About</a>
-                    </div>
-                </div>
+        <div class="home__button">
+          <a download="" href="assets/pdf/AkeylahCV.pdf" class="button button--ghost">
+            Download Resume
+          </a>
+          <a href="#about" class="button">About</a>
+        </div>
+      </div>
 
-                <div class="home__handle">
-                    <img src="assets/img/Disassembled Hard Drive in Detail.png" alt="" class="home__img">
-                </div>
+      <!-- Right side: robot -->
+      <div class="home__img-container">
+        <div class="home__handle">
+          <!-- Spline 3D Robot -->
+          <iframe 
+            src="https://my.spline.design/genkubgreetingrobot-yBhDg0kuK9odwyZ7F3EzyAwS/" 
+            frameborder="0" 
+            class="spline-robot">
+          </iframe>
 
-                <div class="home__social">
+          <!-- Chat bubble -->
+          <div class="robot-chat">
+            👋 Hi there, welcome to my site!
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+         <div class="home__social">
                     <a href="#" target="_blank" class="home__social-link">
                         <i class='bx bxl-linkedin'></i>
                     </a>
@@ -352,71 +369,67 @@ of tech related solutions, along with growing knowledge in cybersecurity and clo
         </section>
 
 
-        <!--=============== WORK ===============-->
-        <section class="work section" id="work">
-            <span class="section__subtitle">My Creations</span>
-            <h2 class="section__title">Recent Works</h2>
+<!--=============== WORK ===============--> 
+<section class="work section" id="work">
+  <span class="section__subtitle">My Creations</span>
+  <h2 class="section__title">Recent Works</h2>
 
-            <div class="work__filters">
-                <span class="work__item active-work" data-filter='all'>All</span>
-                <span class=" work__item" data-filter='.web'>Websites</span>
-                <span class=" work__item" data-filter='.movil'>Projects</span>
-                <span class=" work__item" data-filter='.design'>Design </span>
-            </div>
+  <!-- ===== Filters ===== -->
+  <div class="work__filters">
+    <span class="work__item active-work" data-filter="all">All</span>
+    <span class="work__item" data-filter=".web">Websites</span>
+    <span class="work__item" data-filter=".movil">Projects</span>
+    <span class="work__item" data-filter=".design">Design</span>
+  </div>
 
-            <div class="work__container container grid">
-                <div class="work__card mix web">
-                    <img src="assets/img/work1.jpg" alt="" class="work__img">
+  <!-- ===== Work Cards ===== -->
+  <div class="work__container container grid">
+    
+    <!-- 🌐 Websites -->
+    <div class="work__card mix web">
+      <img src="assets/img/Screenshot 2025-08-29 152539.png" alt="" class="work__img">
+      <h3 class="work__title">Hand Bag Business</h3>
+      <a href="https://6598b29ce9c7a.site123.me/" target="_blank" class="work__button">
+        View <i class='bx bx-right-arrow work__icon'></i>
+      </a>
+    </div>
 
-                    <h3 class="work__title">Web Design</h3>
+    <div class="work__card mix web">
+      <img src="assets/img/Screenshot 2025-08-29 154200.png" alt="" class="work__img">
+      <h3 class="work__title">Clothing Website</h3>
+      <a href="https://646c531eb14ac.site123.me/" class="work__button">
+        View <i class='bx bx-right-arrow work__icon'></i>
+      </a>
+    </div>
 
-                    <a href="#" class="work__button">
-                        Demo <i class='bx bx-right-arrow work__icon'></i>
-                    </a>
-                </div>
+    <!-- 📱 Projects -->
+    <div class="work__card mix movil">
+      <img src="assets/img/work2.jpg" alt="" class="work__img">
+      <h3 class="work__title">App Movil</h3>
+      <a href="#" class="work__button">
+        Demo <i class='bx bx-right-arrow work__icon'></i>
+      </a>
+    </div>
 
-                <div class="work__card mix movil">
-                    <img src="assets/img/work2.jpg" alt="" class="work__img">
+    <div class="work__card mix movil">
+      <img src="assets/img/work5.jpg" alt="" class="work__img">
+      <h3 class="work__title">App Movil</h3>
+      <a href="#" class="work__button">
+        Demo <i class='bx bx-right-arrow work__icon'></i>
+      </a>
+    </div>
 
-                    <h3 class="work__title">App Movil</h3>
+    <!-- 🎨 Design -->
+    <div class="work__card mix design">
+      <img src="assets/img/work3.jpg" alt="" class="work__img">
+      <h3 class="work__title">Brand Design</h3>
+      <a href="#" class="work__button">
+        Demo <i class='bx bx-right-arrow work__icon'></i>
+      </a>
+    </div>
 
-                    <a href="#" class="work__button">
-                        Demo <i class='bx bx-right-arrow work__icon'></i>
-                    </a>
-                </div>
-
-                <div class="work__card mix design">
-                    <img src="assets/img/work3.jpg" alt="" class="work__img">
-
-                    <h3 class="work__title">Brand Design</h3>
-
-                    <a href="#" class="work__button">
-                        Demo <i class='bx bx-right-arrow work__icon'></i>
-                    </a>
-                </div>
-
-                <div class="work__card mix web">
-                    <img src="assets/img/work4.jpg" alt="" class="work__img">
-
-                    <h3 class="work__title">Web Design</h3>
-
-                    <a href="#" class="work__button">
-                        Demo <i class='bx bx-right-arrow work__icon'></i>
-                    </a>
-                </div>
-
-                <div class="work__card mix movil">
-                    <img src="assets/img/work5.jpg" alt="" class="work__img">
-
-                    <h3 class="work__title">App Movil</h3>
-
-                    <a href="#" class="work__button">
-                        Demo <i class='bx bx-right-arrow work__icon'></i>
-                    </a>
-                </div>
-
-            </div>
-        </section>
+  </div>
+</section>
 
 
         <!--=============== SERVICES ===============-->
@@ -537,7 +550,7 @@ of tech related solutions, along with growing knowledge in cybersecurity and clo
                         <div class="contact__card">
                             <i class='bx bxl-whatsapp contact__card-icon'></i>
                             <h3 class="contact__card-title">Whatsapp</h3>
-                            <span class="contact__card-data">6969696969</span>
+                            <span class="contact__card-data">+501-608-3577</span>
 
                         </div>
 

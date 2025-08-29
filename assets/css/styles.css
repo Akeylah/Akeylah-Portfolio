@@ -280,12 +280,13 @@ body.light-theme {
   margin:0;
   bottom: 1rem;
   left:50%;
-  transform: translate(-50%);
+  transform: translate(-50%, -50%);
   background-color: hsla(var(--second-hue), 32%, 16%, 0.95);
   backdrop-filter: blur(16px);
   opacity: 1;
   visibility: visible;
   z-index: 99999;
+  
 }
 
 /* Keep list horizontal */
@@ -347,14 +348,26 @@ body.light-theme {
 }
 
 /*=============== HOME ===============*/
+.home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
 .home__container {
-  position: relative;
-  row-gap: 4.5rem;
-  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;  /* centers whole block */
+  gap: 2rem;                /* spacing between text + robot */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 .home__data {
   text-align: center;
+  flex: 1;
 }
 
 .home__greeting,
@@ -379,27 +392,6 @@ body.light-theme {
   color: var(--first-color);
 }
 
-.home__img {
-  width: 160px;
-}
-
-.home__handle {
-  justify-self: center;
-  width: 190px;
-  height: 293px;
-  background: linear-gradient(
-    180deg,
-    hsla(var(--first-hue), var(--sat), var(--lig), 0.5),
-    hsla(var(--first-hue), var(--sat), var(--lig), 0.1)
-  );
-
-  border-radius: 10rem 10rem 1rem 1rem;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: hidden;
-}
-
 .home__button {
   display: flex;
   justify-content: center;
@@ -407,6 +399,55 @@ body.light-theme {
   gap: 1rem;
 }
 
+/* Robot container */
+.home__robot {
+  position: relative; /* allows chat bubble positioning */
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.spline-robot {
+  width: 100%;
+  max-width: 400px;   /* slightly bigger so whole robot fits */
+  height: 500px;      /* fixed height to prevent clipping */
+  border: none;
+}
+
+/* Chat bubble to the LEFT of the robot */
+.robot-chat {
+  position: absolute;
+  top: 20%;          /* adjust vertical placement */
+  left: -180px;      /* pushes bubble to the left side */
+  background: #fff;
+  color: #333;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  max-width: 160px;
+  animation: floatChat 3s ease-in-out infinite;
+  text-align: center;
+}
+
+/* Chat bubble arrow pointing RIGHT (towards robot) */
+.robot-chat::after {
+  content: "";
+  position: absolute;
+  right: -8px;
+  top: 15px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent transparent #fff;
+}
+
+/* Fun floating animation */
+@keyframes floatChat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* socials and scroll remain unchanged */
 .home__social,
 .home__scroll {
   position: absolute;
@@ -460,6 +501,7 @@ body.light-theme {
   font-size: var(--smaller-font-size);
   transform: rotate(-90deg);
 }
+
 
 /*=============== BUTTONS ===============*/
 .button {
