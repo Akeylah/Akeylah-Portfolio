@@ -14,7 +14,16 @@ function scrollHeader() {
 
 window.addEventListener('scroll', scrollHeader);
 
+
+
+
+ document.getElementById("sayHiBtn").addEventListener("click", function() {
+    const chatBox = document.getElementById("robotChat");
+    chatBox.style.display = (chatBox.style.display === "block") ? "none" : "block";
+  });
+  
 /*=============== SERVICES MODAL ===============*/
+
 // Get the modal
 const modalViews = document.querySelectorAll(".services__modal"),
   modalBtns = document.querySelectorAll(".services__button"),

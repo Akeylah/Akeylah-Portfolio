@@ -85,46 +85,46 @@
 
 
 
- <!--=============== MAIN ===============-->
-<main class="main">
-  <!--=============== HOME ===============-->
-  <section class="home section" id="home">
-    <div class="home__container container grid">
+<!--=============== MAIN ===============-->
+  <main class="main">
+    <!--=============== HOME ===============-->
+    <section class="home section" id="home">
+      <div class="home__container container grid">
 
-      <!-- Left side: text -->
-      <div class="home__data">
-        <span class="home__greeting">Hi, my name is </span>
-        <h1 class="home__name">Akeylah Hernandez</h1>
-        <h3 class="home__education">Computer Science Student</h3>
+        <!-- Left side: text -->
+        <div class="home__data">
+          <span class="home__greeting">Hi, my name is </span>
+          <h1 class="home__name">Akeylah Hernandez</h1>
+          <h3 class="home__education">Computer Science Student</h3>
 
-        <div class="home__button">
-          <a download="" href="assets/pdf/AkeylahCV.pdf" class="button button--ghost">
-            Download Resume
-          </a>
-          <a href="#about" class="button">About</a>
-        </div>
-      </div>
-
-      <!-- Right side: robot -->
-      <div class="home__img-container">
-        <div class="home__handle">
-          <!-- Spline 3D Robot -->
-          <iframe 
-            src="https://my.spline.design/genkubgreetingrobot-yBhDg0kuK9odwyZ7F3EzyAwS/" 
-            frameborder="0" 
-            class="spline-robot">
-          </iframe>
-
-          <!-- Chat bubble -->
-          <div class="robot-chat">
-            👋 Hi there, welcome to my site!
+          <div class="home__button">
+            <a download="" href="assets/pdf/AkeylahCV.pdf" class="button button--ghost">
+              Download Resume
+            </a>
+            <a href="#about" class="button">About</a>
           </div>
         </div>
-      </div>
 
-    </div>
-  </section>
-</main>
+        <!-- Right side: robot -->
+        <div class="home__img-container">
+          <div class="home__handle">
+            <!-- Spline 3D Robot -->
+            <iframe 
+              src="https://my.spline.design/greetingrobot-uJ3nQxUDEUKfRaY0KmILO8hf/" 
+              frameborder="0" 
+              class="spline-robot">
+            </iframe>
+
+            <!-- Chat bubble -->
+            <div class="robot-chat">
+              👋 Hi there, i'm an interactive robot!
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
          <div class="home__social">
                     <a href="#" target="_blank" class="home__social-link">
                         <i class='bx bxl-linkedin'></i>
@@ -137,11 +137,15 @@
                     </a>
                 </div>
 
-                <a href="#about" class="home__scroll">
-                    <i class='bx bx-mouse home__scroll-icon'></i>
-                    <span class="home__scroll-name">Scroll Down</span>
-                </a>
-            </div>
+                <!-- Say Hi Button -->
+              <button id="sayHiBtn" class="home__chat-btn">
+                Say Hi to the Robot 🤖
+              </button>
+
+              <!-- Chat Box (initially hidden) -->
+              <div id="robotChat" class="robot-chatbox">
+                <p>👋 Hey there, human! Ready to explore Akeylah's world of code and creativity?</p>
+              </div>
         </section>
 
         <!--=============== ABOUT ===============-->
@@ -389,18 +393,35 @@ of tech related solutions, along with growing knowledge in cybersecurity and clo
     <div class="work__card mix web">
       <img src="assets/img/Screenshot 2025-08-29 152539.png" alt="" class="work__img">
       <h3 class="work__title">Hand Bag Business</h3>
-      <a href="https://6598b29ce9c7a.site123.me/" target="_blank" class="work__button">
+      <a href="https://67e7704494919.site123.me/" target="_blank" class="work__button">
         View <i class='bx bx-right-arrow work__icon'></i>
       </a>
     </div>
 
     <div class="work__card mix web">
       <img src="assets/img/Screenshot 2025-08-29 154200.png" alt="" class="work__img">
-      <h3 class="work__title">Clothing Website</h3>
-      <a href="https://646c531eb14ac.site123.me/" class="work__button">
+      <h3 class="work__title">Clothing Store</h3>
+      <a href="https://646c531eb14ac.site123.me/"  target="_blank" class="work__button">
         View <i class='bx bx-right-arrow work__icon'></i>
       </a>
     </div>
+
+     <div class="work__card mix web">
+      <img src="assets/img/Screenshot 2025-08-29 193012.png" alt="" class="work__img">
+      <h3 class="work__title">Cleaning Company </h3>
+      <a href="https://6862098674ded.site123.me/" target="_blank" class="work__button">
+        View <i class='bx bx-right-arrow work__icon'></i>
+      </a>
+    </div>
+
+      <div class="work__card mix web">
+      <img src="assets/img/Screenshot 2025-08-29 193255.png" alt="" class="work__img">
+      <h3 class="work__title">Candle Business</h3>
+      <a href="https://646bf44c6da95.site123.me/" target="_blank" class="work__button">
+        View <i class='bx bx-right-arrow work__icon'></i>
+      </a>
+    </div>
+
 
     <!-- 📱 Projects -->
     <div class="work__card mix movil">
@@ -421,10 +442,10 @@ of tech related solutions, along with growing knowledge in cybersecurity and clo
 
     <!-- 🎨 Design -->
     <div class="work__card mix design">
-      <img src="assets/img/work3.jpg" alt="" class="work__img">
-      <h3 class="work__title">Brand Design</h3>
-      <a href="#" class="work__button">
-        Demo <i class='bx bx-right-arrow work__icon'></i>
+      <img src="assets/img/Screenshot 2025-08-29 193818.png" alt="" class="work__img">
+      <h3 class="work__title">History Webpage</h3>
+      <a href="https://662d39026f6f2.site123.me/" target="_blank" class="work__button">
+        View <i class='bx bx-right-arrow work__icon'></i>
       </a>
     </div>
 

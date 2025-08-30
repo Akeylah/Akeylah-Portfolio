@@ -401,26 +401,35 @@ body.light-theme {
 
 /* Robot container */
 .home__robot {
-  position: relative; /* allows chat bubble positioning */
+  position: relative;
   flex: 1;
   display: flex;
   justify-content: center;
+  height: 550px;
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  z-index: 9999; /* Bring to very front */
+  background-color: rgba(255,0,0,0.3); /* Red tint for visibility */
+  border: 2px solid red; /* Red border to see boundaries */
 }
 
 .spline-robot {
   width: 100%;
-  max-width: 400px;   /* slightly bigger so whole robot fits */
-  height: 500px;      /* fixed height to prevent clipping */
+  max-width: 100%;   /* slightly bigger so whole robot fits */
+  height: 500px;    /* fixed height to prevent clipping */
   border: none;
+    transform: scale(0.9);
+    object-fit: contain;
 }
 
 /* Chat bubble to the LEFT of the robot */
 .robot-chat {
   position: absolute;
-  top: 20%;          /* adjust vertical placement */
+  top: 0%;          /* adjust vertical placement */
   left: -180px;      /* pushes bubble to the left side */
-  background: #fff;
-  color: #333;
+  background: hsla(var(--second-hue), 32%, 16%, 0.8);
+  color: #ffffff;
   padding: 0.75rem 1rem;
   border-radius: 1rem;
   font-size: 0.9rem;
@@ -430,22 +439,61 @@ body.light-theme {
   text-align: center;
 }
 
-/* Chat bubble arrow pointing RIGHT (towards robot) */
-.robot-chat::after {
-  content: "";
-  position: absolute;
-  right: -8px;
-  top: 15px;
-  border-width: 8px;
-  border-style: solid;
-  border-color: transparent transparent transparent #fff;
-}
 
 /* Fun floating animation */
 @keyframes floatChat {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
 }
+
+
+
+/* Chat button styled like scroll */
+.home__chat-btn {
+  position: absolute;
+  right: -1.5rem;
+  bottom: 4rem;
+  background: var(--first-color);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.home__chat-btn:hover {
+  background: var(--first-color-alt);
+}
+
+/* Chat box */
+.robot-chatbox {
+  position: absolute;
+  right: 3rem; /* sits to left of button */
+  bottom: 6rem;
+  background: #fff;
+  color: #333;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+  max-width: 220px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: none; /* hidden until button click */
+  animation: floatChat 3s ease-in-out infinite;
+}
+
+.robot-chatbox::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: 20px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+}
+
+
 
 /* socials and scroll remain unchanged */
 .home__social,
@@ -486,7 +534,7 @@ body.light-theme {
 
 .home__scroll {
   color: var(--first-color);
-  right: -1.5rem;
+  right: 1rem;
   bottom: 4rem;
   display: grid;
   row-gap: 2.25rem;
