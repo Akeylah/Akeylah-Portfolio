@@ -1,27 +1,17 @@
 /*=============== CHANGE HEADER BACKGROUND ON SCROLL ===============*/
 function scrollHeader() {
   const header = document.querySelector('.header');
-  const navMenu = document.querySelector('.nav__menu');
 
-  if (window.scrollY > 50) {      // adjust scroll threshold if needed
+  if (window.scrollY > 50) {      
     header.classList.add('scroll-header');
-    navMenu.classList.add('scroll-header'); // triggers bottom float
   } else {
     header.classList.remove('scroll-header');
-    navMenu.classList.remove('scroll-header'); // return to top
   }
 }
 
 window.addEventListener('scroll', scrollHeader);
 
 
-
-
- document.getElementById("sayHiBtn").addEventListener("click", function() {
-    const chatBox = document.getElementById("robotChat");
-    chatBox.style.display = (chatBox.style.display === "block") ? "none" : "block";
-  });
-  
 /*=============== SERVICES MODAL ===============*/
 
 // Get the modal
@@ -99,29 +89,30 @@ let swiperTestimonial = new Swiper(".testimonial__container", {
 });
 
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
-
+/*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 const sections = document.querySelectorAll("section[id]");
 
 function scrollActive() {
   const scrollY = window.pageYOffset;
 
   sections.forEach((current) => {
-    const sectionHeight = current.offsetHeight,
-      sectionTop = current.offsetTop - 58,
-      sectionId = current.getAttribute("id");
+    const sectionHeight = current.offsetHeight;
+    const sectionTop = current.offsetTop - 58;
+    const sectionId = current.getAttribute("id");
 
-    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-      document
-        .querySelector(".nav__menu a[href*=" + sectionId + "]")
-        .classList.add("active-link");
-    } else {
-      document
-        .querySelector(".nav__menu a[href*=" + sectionId + "]")
-        .classList.remove("active-link");
+    const link = document.querySelector(`.nav__menu a[href*="#${sectionId}"]`);
+    if (link) {
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        link.classList.add("active-link");
+      } else {
+        link.classList.remove("active-link");
+      }
     }
   });
 }
+
 window.addEventListener("scroll", scrollActive);
+
 
 /*=============== LIGHT DARK THEME ===============*/
 const themeButton = document.getElementById("theme-button");
@@ -165,12 +156,13 @@ const sr = ScrollReveal({
   distance: "30px",
   duration: 1500,
   delay: 400,
-  reset: false,
+  reset: true,
 });
 
 sr.reveal(`.nav__menu`, {
    opacity: 0,
   scale: 0.1,
+   reset: false
 });
 
 sr.reveal(`.home__data`);
@@ -207,7 +199,7 @@ sr.reveal(`.skills__content`, {
 
 
 
-sr.reveal(`.services__title, services__button`, {
+sr.reveal(`.services__title, .services__button`, {
   delay: 100,
   scale: 0.9,
   origin: "top",
@@ -249,7 +241,7 @@ sr.reveal(`.contact__form, .contact__title-form`, {
   distance: "30px",
 });
 
-sr.reveal(`.footer, footer__container`, {
+sr.reveal(`.footer, .footer__container`, {
   delay: 100,
   scale: 0.9,
   origin: "bottom",

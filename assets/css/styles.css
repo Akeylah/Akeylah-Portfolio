@@ -277,23 +277,23 @@ body.light-theme {
 /* Nav pill floats to bottom when scroll */
 .scroll-header .nav__menu {
   position: fixed;
-  margin:0;
+  margin: 0;
   bottom: 1rem;
-  left:50%;
-  transform: translate(-50%, -50%);
+  left: 50%;
+  transform: translateX(-50%); /* only center horizontally */
   background-color: hsla(var(--second-hue), 32%, 16%, 0.95);
   backdrop-filter: blur(16px);
   opacity: 1;
   visibility: visible;
   z-index: 99999;
-  
 }
+
 
 /* Keep list horizontal */
 .nav__list {
   display: flex;
   gap: 0.75rem;
-  align-items: center;
+  justify-content: center;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -358,7 +358,7 @@ body.light-theme {
   display: flex;
   align-items: center;
   justify-content: center;  /* centers whole block */
-  gap: 2rem;                /* spacing between text + robot */
+  gap: 3rem;                /* spacing between text + robot */
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -367,7 +367,7 @@ body.light-theme {
 
 .home__data {
   text-align: center;
-  flex: 1;
+  flex: 0 1 400px;
 }
 
 .home__greeting,
@@ -402,24 +402,25 @@ body.light-theme {
 /* Robot container */
 .home__robot {
   position: relative;
-  flex: 1;
+  flex: 1 1 auto;
   display: flex;
   justify-content: center;
-  height: 550px;
+  height: 100;
   width: 500px;
   margin: 0 auto;
   padding: 20px;
   z-index: 9999; /* Bring to very front */
   background-color: rgba(255,0,0,0.3); /* Red tint for visibility */
   border: 2px solid red; /* Red border to see boundaries */
+  overflow: visible;
 }
 
 .spline-robot {
   width: 100%;
-  max-width: 100%;   /* slightly bigger so whole robot fits */
-  height: 500px;    /* fixed height to prevent clipping */
+  max-width: none;
+  height: 100%;    /* fixed height to prevent clipping */
   border: none;
-    transform: scale(0.9);
+    transform: scale(1);
     object-fit: contain;
 }
 
@@ -758,10 +759,11 @@ body.light-theme {
 
 .institution {
   font-style: italic;
-  color: var(--text-light);
+  color: var(--text-color-light); /* <-- correct variable */
   margin-bottom: 0.5rem;
   display: block;
 }
+
 
 .timeline-content ul {
   margin-left: 1.2rem;

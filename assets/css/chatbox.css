@@ -15,7 +15,7 @@
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   transition: transform 0.2s;
-  z-index: 1000;
+  z-index: 1200;
 }
 .chat-toggle:hover {
   transform: scale(1.1);
@@ -26,17 +26,23 @@
   position: fixed;
   bottom: 80px;
   right: 20px;
-  width: 320px;
+  width: 380px;
+  height: 520px;
+  max-height: 80vh;
   background: #11152e; /* dark navy */
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.4);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  z-index: 1000;
+  z-index: 1100;
+  transition: all 0.3s ease;
 }
 .chatbox.hidden {
-  display: none;
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+  transition: all 0.3s ease;
 }
 
 /* Header */
@@ -66,18 +72,27 @@
   font-size: 12px;
   color: #9d8cff;
 }
-.chat-options {
+
+.chat-close {
+  background: none;
+  border: none;
+  color: #fff; /* adjust to your header text color */
+  font-size: 18px;
   cursor: pointer;
-  font-size: 20px;
-  color: white;
+  margin-left: auto;
+  transition: color 0.2s ease;
+}
+
+.chat-close:hover {
+  color: #ff6b6b; /* highlight on hover */
 }
 
 /* Messages */
 .chat-messages {
+  height: calc(100% - 150px);
   flex-grow: 1;
   padding: 10px;
   overflow-y: auto;
-  max-height: 300px;
 }
 .message {
   margin-bottom: 12px;
@@ -108,6 +123,7 @@
 
 /* Input */
 .chat-input {
+    padding: 10px;
   display: flex;
   border-top: 1px solid rgba(255,255,255,0.1);
   background: #0d1026;
@@ -137,24 +153,29 @@
 }
 
 
-/* Starter Options */
 .starter-options {
   display: flex;
+  flex-direction: column;
+  gap: 0.6rem; /* space between rows */
+  margin: 10px 0;
+}
+
+.btn-row {
+  display: flex;
+  gap: 0.6rem; /* space between buttons in same row */
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 8px;
-  margin: 8px 0;
 }
 
 .starter-btn {
-  background: #9d8cff; /* your purple */
-  color: #fff;
+  background-color: #7c4dff; /* match your theme */
+  color: white;
+  padding: 8px 14px;
   border: none;
   border-radius: 20px;
-  padding: 6px 14px;
   cursor: pointer;
-  font-size: 13px;
-  line-height: 1.2;
-  transition: background 0.3s ease, transform 0.15s ease;
+  font-size: 0.9rem;
+  transition: background 0.3s;
 }
 
 .starter-btn:hover {

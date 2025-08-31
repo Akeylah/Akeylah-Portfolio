@@ -10,6 +10,13 @@ chatToggle.addEventListener("click", () => {
   chatbox.classList.toggle("hidden");
 });
 
+const chatClose = document.getElementById("chat-close");
+
+chatClose.addEventListener("click", () => {
+  chatbox.classList.add("hidden"); // just hides it again
+});
+
+
 // Send message on button click or Enter
 sendBtn.addEventListener("click", sendMessage);
 input.addEventListener("keypress", function(e) {
@@ -53,31 +60,41 @@ function getTime() {
 
 // --- Responses ---
 const responses = {
-  projects: "Here are some of my top projects: 🚀 [Project 1] [Project 2]",
-  resume: "📄 You can view my resume here: [Resume Link]",
-  contact: "📬 You can reach me via the contact form or email: me@example.com",
   joke: "😂 Why do programmers prefer dark mode? Because light attracts bugs!",
-  skills: "💻 My main skills are JavaScript, React, CSS, and Python."
-};
+  skills: "💻 My main skills are JavaScript, React, CSS, and Python.",
+  hobbies: "🎨 Outside of coding, I love [your hobbies here—like painting, reading, gaming, photography].",
+  career: "🚀 My goal is to [your career goals here—like become a full-stack developer, work in AI, or freelance].",
+  funfact: "✨ Fun fact: [add something unique about yourself here].",
+  tech: "🛠️ This portfolio was built with HTML, CSS, and JavaScript! I wanted it to be clean, interactive, and mobile-friendly.",
+  inspiration: "🌟 I get inspired by [famous designers, coders, or personal motivations—like creativity, solving problems, or helping people].",
+contact: "📬 You can reach me at: your@email.com or via the Contact form below.",
 
+};
 // Handle free-text keywords
 function handleUserInput(msg) {
   msg = msg.toLowerCase();
-  if (msg.includes("project")) return responses.projects;
-  if (msg.includes("resume") || msg.includes("cv")) return responses.resume;
-  if (msg.includes("contact")) return responses.contact;
-  if (msg.includes("joke")) return responses.joke;
-  if (msg.includes("skills")) return responses.skills;
-  return null; // fallback handled by fakeReply
+  let replies = [];
+
+  if (msg.includes("contact") || msg.includes("email")) replies.push(responses.contact);
+  if (msg.includes("joke") || msg.includes("funny")) replies.push(responses.joke);
+  if (msg.includes("skills") || msg.includes("tech stack")) replies.push(responses.skills);
+  if (msg.includes("hobby") || msg.includes("interests")) replies.push(responses.hobbies);
+  if (msg.includes("career") || msg.includes("goal")) replies.push(responses.career);
+  if (msg.includes("fun fact") || msg.includes("fact")) replies.push(responses.funfact);
+  if (msg.includes("tech") || msg.includes("built")) replies.push(responses.tech);
+  if (msg.includes("inspiration") || msg.includes("inspire")) replies.push(responses.inspiration);
+
+  return replies.length > 0 ? replies.join("\n\n") : null;
 }
 
-// Fake fallback responses
+
+// Smarter fallback when no keywords match
 function fakeReply() {
   const replies = [
-    "Hi there! 👋",
-    "Thanks for checking my portfolio!",
-    "Would you like to see my projects?",
-    "I can also help you contact me."
+    "🤔 I’m not sure about that. Try asking about *projects, resume, contact, skills, or hobbies*.",
+    "💡 You can ask me things like 'Show me your projects' or 'Tell me a fun fact'.",
+    "👋 I can share info about my portfolio, career goals, hobbies, and more. What interests you?",
+    "✨ Not sure what to ask? Click one of the buttons above ⬆️."
   ];
   return replies[Math.floor(Math.random() * replies.length)];
 }

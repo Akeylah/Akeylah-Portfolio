@@ -86,99 +86,110 @@
 
 
 <!--=============== MAIN ===============-->
-  <main class="main">
-    <!--=============== HOME ===============-->
-    <section class="home section" id="home">
-      <div class="home__container container grid">
+<main class="main">
+  <!--=============== HOME ===============-->
+  <section class="home section" id="home">
+    <div class="home__container container grid">
 
-        <!-- Left side: text -->
-        <div class="home__data">
-          <span class="home__greeting">Hi, my name is </span>
-          <h1 class="home__name">Akeylah Hernandez</h1>
-          <h3 class="home__education">Computer Science Student</h3>
+      <!-- Left side: text -->
+      <div class="home__data">
+        <span class="home__greeting">Hi, my name is </span>
+        <h1 class="home__name">Akeylah Hernandez</h1>
+        <h3 class="home__education">Computer Science Student</h3>
 
-          <div class="home__button">
-            <a download="" href="assets/pdf/AkeylahCV.pdf" class="button button--ghost">
-              Download Resume
-            </a>
-            <a href="#about" class="button">About</a>
+        <div class="home__button">
+          <a download="" href="assets/pdf/AkeylahCV.pdf" class="button button--ghost">
+            Download Resume
+          </a>
+          <a href="#about" class="button button--ghost">About</a>
+        </div>
+      </div>
+
+      <!-- Right side: robot -->
+      <div class="home__img-container">
+        <div class="home__handle">
+          <!-- Spline 3D Robot -->
+          <iframe 
+            src="https://my.spline.design/greetingrobot-uJ3nQxUDEUKfRaY0KmILO8hf/" 
+            frameborder="0" 
+            class="spline-robot">
+          </iframe>
+
+          <!-- Chat bubble -->
+          <div class="robot-chat">
+            👋 Hi there, i'm an interactive robot!
           </div>
         </div>
-
-        <!-- Right side: robot -->
-        <div class="home__img-container">
-          <div class="home__handle">
-            <!-- Spline 3D Robot -->
-            <iframe 
-              src="https://my.spline.design/greetingrobot-uJ3nQxUDEUKfRaY0KmILO8hf/" 
-              frameborder="0" 
-              class="spline-robot">
-            </iframe>
-
-            <!-- Chat bubble -->
-            <div class="robot-chat">
-              👋 Hi there, i'm an interactive robot!
-            </div>
-          </div>
-        </div>
-
       </div>
-    </section>
-  </main>
-         <div class="home__social">
-                    <a href="#" target="_blank" class="home__social-link">
-                        <i class='bx bxl-linkedin'></i>
-                    </a>
-                    <a href="#" target="_blank" class="home__social-link">
-                        <i class='bx bxl-github'></i>
-                    </a>
-                    <a href="#" target="_blank" class="home__social-link">
-                        <i class='bx bxl-dribbble'></i>
-                    </a>
-                </div>
 
-<!-- Floating Chat Button -->
-<div id="chat-toggle" class="chat-toggle">💬</div>
-
-<!-- Chatbox -->
-<div id="chatbox" class="chatbox hidden">
-  <!-- Header -->
-  <div class="chat-header">
-    <img src="./assets/img/download__4_-removebg-preview.png" alt="Avatar" class="chat-avatar">
-    <div class="chat-info">
-      <h4 class="chat-name">Akeylah Assistant</h4>
-      <p class="chat-subtitle">Portfolio Chat</p>
     </div>
-    <div class="chat-options">⋮</div>
-  </div>
+  </section>
+</main>
 
-  <!-- Messages Area -->
-  <div class="chat-messages">
-    <div class="message bot">
-      <span>👋 Hey there! What would you like to check out?</span>
-     
-      <!-- Starter Options inside bot message -->
-      <div class="starter-options">
-        <button class="starter-btn" data-option="projects">💼 Projects</button>
-        <button class="starter-btn" data-option="resume">📄 Resume</button>
-        <button class="starter-btn" data-option="contact">✉️ Contact</button>
-        <button class="starter-btn" data-option="skills">💻 Skills</button>
-        <button class="starter-btn" data-option="joke">😂 Joke</button>
-      </div>
-       <div class="meta">19:09 ✓✓</div>
-    </div>
-  </div>
-  
-
-  <!-- Input -->
-  <div class="chat-input">
-    <input type="text" id="chatMessage" placeholder="Type message...">
-    <button id="sendMessage">Send</button>
-  </div>
+<div class="home__social">
+  <a href="#" target="_blank" class="home__social-link">
+    <i class='bx bxl-linkedin'></i>
+  </a>
+  <a href="#" target="_blank" class="home__social-link">
+    <i class='bx bxl-github'></i>
+  </a>
+  <a href="#" target="_blank" class="home__social-link">
+    <i class='bx bxl-dribbble'></i>
+  </a>
 </div>
 
+<!-- ================= CHATBOX WRAPPER ================= -->
+<div id="chatboxWrapper">
+  <!-- Floating Chat Button -->
+  <div id="chat-toggle" class="chat-toggle">💬</div>
 
-        </section>
+  <!-- Chatbox -->
+  <div id="chatbox" class="chatbox hidden">
+    <!-- Header -->
+    <div class="chat-header">
+      <img src="./assets/img/download__4_-removebg-preview.png" alt="Avatar" class="chat-avatar">
+      <div class="chat-info">
+        <h4 class="chat-name">Akeylah's Assistant</h4>
+        <p class="chat-subtitle">Ai Chat</p>
+      </div>
+      <button id="chat-close" class="chat-close">✖</button>
+    </div>
+
+    <!-- Messages Area -->
+    <div class="chat-messages">
+      <div class="message bot">
+        <span>👋 Hey there! You can click a button below ⬇️ or just type in the chat box.</span>
+        <div class="meta">19:09 ✓✓</div>
+      </div>
+
+      <div class="starter-options">
+        <div class="btn-row">
+          <button class="starter-btn" data-option="skills">💻 Skills</button>
+          <button class="starter-btn" data-option="joke">😂 Joke</button>
+        </div>
+        <div class="btn-row">
+          <button class="starter-btn" data-option="hobbies">🎨 Hobbies</button>
+          <button class="starter-btn" data-option="career">🚀 Career Goals</button>
+        </div>
+        <div class="btn-row">
+          <button class="starter-btn" data-option="funfact">✨ Fun Fact</button>
+          <button class="starter-btn" data-option="tech">🛠️ How I Built This</button>
+        </div>
+        <div class="btn-row">
+          <button class="starter-btn" data-option="inspiration">🌟 Inspiration</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="chat-input">
+      <input type="text" id="chatMessage" placeholder="Type message...">
+      <button id="sendMessage">Send</button>
+    </div>
+  </div>
+</div>
+<!-- ================= END CHATBOX WRAPPER ================= -->
+
 
         <!--=============== ABOUT ===============-->
         <section class="about section" id="about">
@@ -716,21 +727,13 @@ of tech related solutions, along with growing knowledge in cybersecurity and clo
         </div>
     </footer>
 
-    <!--=============== SCROLLREVEAL ===============-->
 
-    <!-- <script src="assets/js/scrollreveal.min.js"></script> -->
-    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js" defer></script>
+<script src="assets/js/swiper-bundle.min.js" defer></script>
+<script src="assets/js/chatbox.js" defer></script>
+<script src="assets/js/mixitup.min.js" defer></script>
+<script src="assets/js/main.js" defer></script>
 
-    <!--=============== SWIPER JS ===============-->
-    <script src="assets/js/swiper-bundle.min.js"></script>
-      <!--=============== Chatbox JS ===============-->
-    <script src="assets/js/chatbox.js"></script>
-
-    <!--=============== MIXITUP FILTER ===============-->
-    <script src="assets/js/mixitup.min.js"></script>
-
-    <!--=============== MAIN JS ===============-->
-    <script src="assets/js/main.js"></script>
 
   
 </body>
