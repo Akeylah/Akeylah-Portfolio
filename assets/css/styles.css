@@ -792,6 +792,7 @@ body.light-theme {
   color: var(--first-color);
   text-align: center;
   margin-bottom: 1.5rem;
+  
 }
 
 .skills__box {
@@ -1034,14 +1035,19 @@ body.light-theme {
 }
 
 .work__img {
+  width: 100%;            /* take full width of parent */
+  height: 200px;          /* fixed height for all images */
   border-radius: 1rem;
   margin-bottom: 0.75rem;
+  object-fit: cover;      /* crop nicely instead of stretching */
+  display: block;         /* removes bottom inline gap */
 }
 
 .work__title {
   font-size: var(--normal-font-size);
   font-weight: var(--font-medium);
   margin-bottom: 0.25rem;
+  
 }
 
 .work__button {

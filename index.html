@@ -24,7 +24,7 @@
 
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="assets/css/styles.css">
-
+    <link rel="stylesheet" href="assets/css/chatbox.css">
     <title> Akeylah Hernandez Portfolio </title>
 </head>
 
@@ -137,15 +137,47 @@
                     </a>
                 </div>
 
-                <!-- Say Hi Button -->
-              <button id="sayHiBtn" class="home__chat-btn">
-                Say Hi to the Robot 🤖
-              </button>
+<!-- Floating Chat Button -->
+<div id="chat-toggle" class="chat-toggle">💬</div>
 
-              <!-- Chat Box (initially hidden) -->
-              <div id="robotChat" class="robot-chatbox">
-                <p>👋 Hey there, human! Ready to explore Akeylah's world of code and creativity?</p>
-              </div>
+<!-- Chatbox -->
+<div id="chatbox" class="chatbox hidden">
+  <!-- Header -->
+  <div class="chat-header">
+    <img src="./assets/img/download__4_-removebg-preview.png" alt="Avatar" class="chat-avatar">
+    <div class="chat-info">
+      <h4 class="chat-name">Akeylah Assistant</h4>
+      <p class="chat-subtitle">Portfolio Chat</p>
+    </div>
+    <div class="chat-options">⋮</div>
+  </div>
+
+  <!-- Messages Area -->
+  <div class="chat-messages">
+    <div class="message bot">
+      <span>👋 Hey there! What would you like to check out?</span>
+     
+      <!-- Starter Options inside bot message -->
+      <div class="starter-options">
+        <button class="starter-btn" data-option="projects">💼 Projects</button>
+        <button class="starter-btn" data-option="resume">📄 Resume</button>
+        <button class="starter-btn" data-option="contact">✉️ Contact</button>
+        <button class="starter-btn" data-option="skills">💻 Skills</button>
+        <button class="starter-btn" data-option="joke">😂 Joke</button>
+      </div>
+       <div class="meta">19:09 ✓✓</div>
+    </div>
+  </div>
+  
+
+  <!-- Input -->
+  <div class="chat-input">
+    <input type="text" id="chatMessage" placeholder="Type message...">
+    <button id="sendMessage">Send</button>
+  </div>
+</div>
+
+
         </section>
 
         <!--=============== ABOUT ===============-->
@@ -393,7 +425,7 @@ of tech related solutions, along with growing knowledge in cybersecurity and clo
     <div class="work__card mix web">
       <img src="assets/img/Screenshot 2025-08-29 152539.png" alt="" class="work__img">
       <h3 class="work__title">Hand Bag Business</h3>
-      <a href="https://67e7704494919.site123.me/" target="_blank" class="work__button">
+      <a href="https://6598b29ce9c7a.site123.me/" target="_blank" class="work__button">
         View <i class='bx bx-right-arrow work__icon'></i>
       </a>
     </div>
@@ -418,6 +450,14 @@ of tech related solutions, along with growing knowledge in cybersecurity and clo
       <img src="assets/img/Screenshot 2025-08-29 193255.png" alt="" class="work__img">
       <h3 class="work__title">Candle Business</h3>
       <a href="https://646bf44c6da95.site123.me/" target="_blank" class="work__button">
+        View <i class='bx bx-right-arrow work__icon'></i>
+      </a>
+    </div>
+
+       <div class="work__card mix web">
+      <img src="assets/img/download (2).jpeg" alt="" class="work__img">
+      <h3 class="work__title">Poem Website</h3>
+      <a href="https://akeylah.github.io/Poem-Web/" target="_blank" class="work__button">
         View <i class='bx bx-right-arrow work__icon'></i>
       </a>
     </div>
@@ -583,36 +623,45 @@ of tech related solutions, along with growing knowledge in cybersecurity and clo
                     </div>
                 </div>
                 
-             <!--=============== Contact form ===============-->
-                <div class="contact__content">
-                    <h3 class="contact__title contact__title-form">Email Me Here</h3>
+            <!--=============== Contact form ===============-->
+<div class="contact__content">
+  <h3 class="contact__title contact__title-form">Email Me Here</h3>
 
-                    <form action="" class="contact__form">
-                        <div class="contact__form-div">
-                            <label for="" class="contact__form-tag">Name</label>
-                            <input type="text" placeholder="Enter name" class="contact__form-input">
-                        </div>
+  <form id="contactForm" 
+        action="https://formspree.io/f/xanjgqaq" 
+        method="POST" 
+        class="contact__form">
 
-                        <div class="contact__form-div">
-                            <label for="" class="contact__form-tag">Email</label>
-                            <input type="text" placeholder="Enter email" class="contact__form-input">
-                        </div>
+    <!-- Name -->
+    <div class="contact__form-div">
+      <label for="name" class="contact__form-tag">Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter name" class="contact__form-input" required>
+    </div>
 
-                        <div class="contact__form-div contact__form-area">
-                            <label for="" class="contact__form-tag">Message</label>
-                            <textarea name="" id="" cols="30" rows="10" placeholder="Write your Message"
-                                class="contact__form-input "></textarea>
-                        </div>
+    <!-- Email -->
+    <div class="contact__form-div">
+      <label for="email" class="contact__form-tag">Email</label>
+      <input type="email" id="email" name="_replyto" placeholder="Enter email" class="contact__form-input" required>
+    </div>
 
+    <!-- Message -->
+    <div class="contact__form-div contact__form-area">
+      <label for="message" class="contact__form-tag">Message</label>
+      <textarea id="message" name="message" cols="30" rows="10" placeholder="Write your Message"
+        class="contact__form-input" required></textarea>
+    </div>
 
-                        <button class="button">
-                            Send Email
-                        </button>
-                    </form>
+    <!-- Button -->
+    <button type="submit" class="button">
+      Send Email
+    </button>
+  </form>
 
-                </div>
+  <!-- Feedback message -->
+  <p id="formMsg" class="form__message"></p>
+</div>
+</section>
 
-        </section>
     </main>
 
     <!--=============== FOOTER ===============-->
@@ -674,12 +723,16 @@ of tech related solutions, along with growing knowledge in cybersecurity and clo
 
     <!--=============== SWIPER JS ===============-->
     <script src="assets/js/swiper-bundle.min.js"></script>
+      <!--=============== Chatbox JS ===============-->
+    <script src="assets/js/chatbox.js"></script>
 
     <!--=============== MIXITUP FILTER ===============-->
     <script src="assets/js/mixitup.min.js"></script>
 
     <!--=============== MAIN JS ===============-->
     <script src="assets/js/main.js"></script>
+
+  
 </body>
 
 </html>

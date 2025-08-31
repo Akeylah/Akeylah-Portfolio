@@ -293,15 +293,35 @@ timelineItems.forEach(item => {
   observer.observe(item);
 });
 
-document.getElementById("contact-form").addEventListener("submit", function(e) {
+
+
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
   e.preventDefault();
 
-  emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
-    .then(() => {
-      alert("✅ Message sent successfully!");
-      this.reset(); // clear form
-    }, (error) => {
-      alert("❌ Failed to send message. Try again later.");
-      console.error("EmailJS Error:", error);
+  const form = e.target;
+  const msg = document.getElementById("formMsg");
+
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
     });
+
+    if (response.ok) {
+      msg.textContent = "✅ Thanks for your message! I’ll get back to you soon.";
+      msg.style.color = "green";
+      form.reset();
+    } else {
+      msg.textContent = "❌ Oops! Something went wrong. Please try again.";
+      msg.style.color = "red";
+    }
+  } catch (error) {
+    msg.textContent = "⚠️ Network error. Please check your connection.";
+    msg.style.color = "red";
+  }
 });
+
+
+
+
