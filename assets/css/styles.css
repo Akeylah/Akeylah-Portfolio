@@ -424,30 +424,53 @@ body.light-theme {
     object-fit: contain;
 }
 
-/* Chat bubble to the LEFT of the robot */
-.robot-chat {
+  .robot-chat {
   position: absolute;
-  top: 0%;          /* adjust vertical placement */
-  left: -180px;      /* pushes bubble to the left side */
-  background: hsla(var(--second-hue), 32%, 16%, 0.8);
+  top: 0;
+  left: 260px;   /* moved further right */
+  background: hsla(var(--second-hue), 32%, 16%, 0.9);
   color: #ffffff;
-  padding: 0.75rem 1rem;
+  padding: 1.2rem 1.4rem;   /* more padding for breathing space */
   border-radius: 1rem;
-  font-size: 0.9rem;
+  font-size: 1rem;          /* slightly bigger text */
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  max-width: 160px;
-  animation: floatChat 3s ease-in-out infinite;
-  text-align: center;
+  max-width: 260px;         /* larger so words don’t clump */
+  text-align: left;
+  line-height: 1.5;
+
+  /* Fade-in animation */
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards, floatChat 3s ease-in-out infinite 0.6s;
+}
+
+.robot-chat::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid hsla(var(--second-hue), 32%, 16%, 0.9);
 }
 
 
-/* Fun floating animation */
 @keyframes floatChat {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
 }
 
-
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px); /* only affects first run */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* Chat button styled like scroll */
 .home__chat-btn {

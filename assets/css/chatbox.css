@@ -29,9 +29,9 @@
   width: 380px;
   height: 520px;
   max-height: 80vh;
-  background: #11152e; /* dark navy */
+  background: #33395cb6; /* dark navy */
   border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 25px rgba(211, 127, 245, 0.4);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -109,7 +109,7 @@
   border-bottom-left-radius: 5px;
 }
 .message.user {
-  background: #9d8cff;
+  background: #5a4ca8;
   color: white;
   margin-left: auto;
   border-bottom-right-radius: 5px;

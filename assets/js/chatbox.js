@@ -11,35 +11,52 @@ chatToggle.addEventListener("click", () => {
 });
 
 const chatClose = document.getElementById("chat-close");
-
 chatClose.addEventListener("click", () => {
-  chatbox.classList.add("hidden"); // just hides it again
+  chatbox.classList.add("hidden");
 });
-
 
 // Send message on button click or Enter
 sendBtn.addEventListener("click", sendMessage);
-input.addEventListener("keypress", function(e) {
+input.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     e.preventDefault();
     sendMessage();
   }
 });
 
-function sendMessage() {
+async function sendMessage() {
   const msg = input.value.trim();
   if (msg === "") return;
 
-  // User message
+  // Show user message
   appendMessage(msg, "user");
-
   input.value = "";
 
-  // Bot reply (check keywords first, fallback to fakeReply)
-  setTimeout(() => {
-    const reply = handleUserInput(msg) || fakeReply();
-    appendMessage(reply, "bot");
-  }, 800);
+  // First check local keywords
+  const localReply = handleUserInput(msg);
+  if (localReply) {
+    setTimeout(() => appendMessage(localReply, "bot"), 600);
+    return;
+  }
+
+  // Otherwise → send to AI backend
+  appendMessage("🤖 ...typing", "bot"); // typing indicator
+  try {
+    const response = await fetch("http://localhost:3000/api/chat", {  // 🔹 FIXED endpoint
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: msg }),
+    });
+
+    const data = await response.json();
+
+    removeTypingIndicator();
+    appendMessage(data.reply, "bot");
+  } catch (err) {
+    console.error("AI error:", err);
+    removeTypingIndicator();
+    appendMessage(fakeReply(), "bot");
+  }
 }
 
 function appendMessage(text, sender) {
@@ -53,6 +70,13 @@ function appendMessage(text, sender) {
   messages.scrollTop = messages.scrollHeight;
 }
 
+function removeTypingIndicator() {
+  const typing = messages.querySelector(".message.bot span");
+  if (typing && typing.textContent.includes("...typing")) {
+    typing.parentElement.remove();
+  }
+}
+
 function getTime() {
   const now = new Date();
   return now.getHours() + ":" + String(now.getMinutes()).padStart(2, "0");
@@ -62,15 +86,17 @@ function getTime() {
 const responses = {
   joke: "😂 Why do programmers prefer dark mode? Because light attracts bugs!",
   skills: "💻 My main skills are JavaScript, React, CSS, and Python.",
-  hobbies: "🎨 Outside of coding, I love [your hobbies here—like painting, reading, gaming, photography].",
-  career: "🚀 My goal is to [your career goals here—like become a full-stack developer, work in AI, or freelance].",
+  hobbies:
+    "🎨 Outside of coding, I love [your hobbies here—like painting, reading, gaming, photography].",
+  career:
+    "🚀 My goal is to [your career goals here—like become a full-stack developer, work in AI, or freelance].",
   funfact: "✨ Fun fact: [add something unique about yourself here].",
-  tech: "🛠️ This portfolio was built with HTML, CSS, and JavaScript! I wanted it to be clean, interactive, and mobile-friendly.",
-  inspiration: "🌟 I get inspired by [famous designers, coders, or personal motivations—like creativity, solving problems, or helping people].",
-contact: "📬 You can reach me at: your@email.com or via the Contact form below.",
-
+  tech: "🛠️ This portfolio was built with HTML, CSS, and JavaScript!",
+  inspiration:
+    "🌟 I get inspired by [famous designers, coders, or personal motivations].",
+  contact: "📬 You can reach me at: your@email.com",
 };
-// Handle free-text keywords
+
 function handleUserInput(msg) {
   msg = msg.toLowerCase();
   let replies = [];
@@ -87,30 +113,28 @@ function handleUserInput(msg) {
   return replies.length > 0 ? replies.join("\n\n") : null;
 }
 
-
-// Smarter fallback when no keywords match
 function fakeReply() {
   const replies = [
     "🤔 I’m not sure about that. Try asking about *projects, resume, contact, skills, or hobbies*.",
     "💡 You can ask me things like 'Show me your projects' or 'Tell me a fun fact'.",
     "👋 I can share info about my portfolio, career goals, hobbies, and more. What interests you?",
-    "✨ Not sure what to ask? Click one of the buttons above ⬆️."
+    "✨ Not sure what to ask? Click one of the buttons above ⬆️.",
   ];
   return replies[Math.floor(Math.random() * replies.length)];
 }
 
-// --- Handle starter buttons ---
+// Starter buttons
 if (starterOptions) {
-  starterOptions.addEventListener("click", function(e) {
+  starterOptions.addEventListener("click", function (e) {
     if (e.target.classList.contains("starter-btn")) {
       const option = e.target.dataset.option;
-      
-      // Show button text as user message
       appendMessage(e.target.textContent, "user");
 
-      // Bot reply
       setTimeout(() => {
-        appendMessage(responses[option] || "Hmm, I don’t have a response for that yet.", "bot");
+        appendMessage(
+          responses[option] || "Hmm, I don’t have a response for that yet.",
+          "bot"
+        );
       }, 600);
     }
   });
