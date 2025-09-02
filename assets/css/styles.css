@@ -1100,8 +1100,45 @@ body.light-theme {
   color: var(--body-color);
 }
 
+/* Container for image + overlay */
+.work__img-container {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+}
 
+/* Overlay hidden by default */
+.work__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65); /* semi-transparent black */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  font-size: var(--small-font-size);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
 
+/* Show overlay when hovering on the container */
+.work__img-container:hover .work__overlay {
+  opacity: 1;
+}
+
+.section__description {
+  max-width: 700px;            /* keeps text nicely centered */
+  margin: 0 auto 2rem auto;    /* center & add space below */
+  text-align: center;
+  font-size: var(--small-font-size);
+  color: var(--text-color-light); /* softer gray text */
+  line-height: 1.6;            /* more readable */
+}
 /*=============== CONTACT ===============*/
 .contact__container {
   row-gap: 3rem;
