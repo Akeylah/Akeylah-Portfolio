@@ -301,8 +301,8 @@ document.getElementById("contactForm").addEventListener("submit", async function
     });
 
     if (response.ok) {
-      msg.textContent = "✅ Thanks for your message! I’ll get back to you soon.";
-      msg.style.color = "green";
+      msg.textContent = "✅ Thank you for reaching out! I’ll get back to you soon.";
+      msg.style.color = "White";
       form.reset();
     } else {
       msg.textContent = "❌ Oops! Something went wrong. Please try again.";

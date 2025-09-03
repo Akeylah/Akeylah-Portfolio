@@ -85,16 +85,16 @@ function getTime() {
 // --- Responses ---
 const responses = {
   joke: "😂 Why do programmers prefer dark mode? Because light attracts bugs!",
-  skills: "💻 My main skills are JavaScript, React, CSS, and Python.",
+  skills: "💻 My main skills are Html, CSS, Javascript, c++ and SQL.",
   hobbies:
-    "🎨 Outside of coding, I love [your hobbies here—like painting, reading, gaming, photography].",
+    "🎨 Outside of coding, I love painting, reading, gaming, photography, writing poetry and gardening.",
   career:
-    "🚀 My goal is to [your career goals here—like become a full-stack developer, work in AI, or freelance].",
-  funfact: "✨ Fun fact: [add something unique about yourself here].",
-  tech: "🛠️ This portfolio was built with HTML, CSS, and JavaScript!",
+    "🚀 My goal is to become a web/graphic designer or data engineer.",
+  funfact: "✨ Fun fact: I originally wanted to be a robotics engineer. I'll reach that goal one day, always dream big!",
+  tech: "🛠️ This portfolio was built with advance HTML, CSS, and JavaScript and a lot of debugging 😂!",
   inspiration:
-    "🌟 I get inspired by [famous designers, coders, or personal motivations].",
-  contact: "📬 You can reach me at: your@email.com",
+    "🌟 I get inspired by personal curiosity. I like to use my creative gift and build extraordinary things",
+  contact: "📬 You can reach me at: akeylahh356@email.com",
 };
 
 function handleUserInput(msg) {
