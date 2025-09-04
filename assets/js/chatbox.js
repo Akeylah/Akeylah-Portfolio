@@ -1,9 +1,17 @@
-const chatToggle = document.getElementById("chat-toggle");
+const chatToggle = document.getElementById("chat-toggle"); 
 const chatbox = document.getElementById("chatbox");
 const sendBtn = document.getElementById("sendMessage");
 const input = document.getElementById("chatMessage");
 const messages = document.querySelector(".chat-messages");
 const starterOptions = document.querySelector(".starter-options");
+
+// --- API base (local vs deployed) ---
+// --- API base (local vs deployed) ---
+const API_BASE =
+  window.location.hostname.includes("localhost") ||
+  window.location.hostname.includes("app.github.dev")
+    ? window.location.origin.replace(":5503", ":3000") // frontend 5503 → backend 3000
+    : "https://your-deployed-server.com"; // change this once you deploy
 
 // Toggle chatbox
 chatToggle.addEventListener("click", () => {
@@ -42,7 +50,7 @@ async function sendMessage() {
   // Otherwise → send to AI backend
   appendMessage("🤖 ...typing", "bot", true); // typing indicator
   try {
-    const response = await fetch("/api/chat", {   // ✅ relative path (works locally + deployed)
+    const response = await fetch(`${API_BASE}/api/chat`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: msg }),

@@ -1,33 +1,31 @@
 // server.js
 require("dotenv").config();
 const express = require("express");
-const fetch = require("node-fetch");
 const cors = require("cors");
+const { CohereClient } = require("cohere-ai");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Initialize Cohere client with API key
+const cohere = new CohereClient({
+  token: process.env.COHERE_API_KEY,
+});
 
 // Route for chat
 app.post("/api/chat", async (req, res) => {
   try {
     const userMessage = req.body.message;
 
-    const response = await fetch("https://api.cohere.ai/v1/chat", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${process.env.COHERE_API_KEY}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: "command-r",  // ✅ free-tier conversational model
-        message: userMessage
-      })
+    // Use Cohere Chat endpoint
+    const response = await cohere.chat({
+      model: "command-r",
+      message: userMessage,
     });
 
-    const data = await response.json();
     res.json({
-      reply: data.text?.trim() || "⚠️ Sorry, I didn’t understand that."
+      reply: response.text?.trim() || "⚠️ Sorry, I didn’t understand that.",
     });
 
   } catch (error) {
