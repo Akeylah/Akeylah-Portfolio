@@ -40,9 +40,9 @@ async function sendMessage() {
   }
 
   // Otherwise → send to AI backend
-  appendMessage("🤖 ...typing", "bot"); // typing indicator
+  appendMessage("🤖 ...typing", "bot", true); // typing indicator
   try {
-    const response = await fetch("http://localhost:3000/api/chat", {  // 🔹 FIXED endpoint
+    const response = await fetch("/api/chat", {   // ✅ relative path (works locally + deployed)
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: msg }),
@@ -59,9 +59,11 @@ async function sendMessage() {
   }
 }
 
-function appendMessage(text, sender) {
+function appendMessage(text, sender, typing = false) {
   const msgDiv = document.createElement("div");
   msgDiv.classList.add("message", sender);
+  if (typing) msgDiv.classList.add("typing");
+
   msgDiv.innerHTML = `
     <span>${text}</span>
     <div class="meta">${getTime()} ✓✓</div>
@@ -71,15 +73,17 @@ function appendMessage(text, sender) {
 }
 
 function removeTypingIndicator() {
-  const typing = messages.querySelector(".message.bot span");
-  if (typing && typing.textContent.includes("...typing")) {
-    typing.parentElement.remove();
-  }
+  const typing = messages.querySelector(".message.bot.typing");
+  if (typing) typing.remove();
 }
 
 function getTime() {
   const now = new Date();
-  return now.getHours() + ":" + String(now.getMinutes()).padStart(2, "0");
+  let hours = now.getHours();
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+  const ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12 || 12;
+  return `${hours}:${minutes} ${ampm}`;
 }
 
 // --- Responses ---
@@ -91,7 +95,7 @@ const responses = {
   career:
     "🚀 My goal is to become a web/graphic designer or data engineer.",
   funfact: "✨ Fun fact: I originally wanted to be a robotics engineer. I'll reach that goal one day, always dream big!",
-  tech: "🛠️ This portfolio was built with advance HTML, CSS, and JavaScript and a lot of debugging 😂!",
+  tech: "🛠️ This portfolio was built with advanced HTML, CSS, and JavaScript and a lot of debugging 😂!",
   inspiration:
     "🌟 I get inspired by personal curiosity. I like to use my creative gift and build extraordinary things",
   contact: "📬 You can reach me at: akeylahh356@email.com",

@@ -13,22 +13,21 @@ app.post("/api/chat", async (req, res) => {
   try {
     const userMessage = req.body.message;
 
-    const response = await fetch("https://api.cohere.ai/v1/generate", {
+    const response = await fetch("https://api.cohere.ai/v1/chat", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${process.env.COHERE_API_KEY}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "command-r",  // free-tier compatible model
-        prompt: userMessage,
-        max_tokens: 100
+        model: "command-r",  // ✅ free-tier conversational model
+        message: userMessage
       })
     });
 
     const data = await response.json();
     res.json({
-      reply: data.generations?.[0]?.text?.trim() || "⚠️ Sorry, I didn’t understand that."
+      reply: data.text?.trim() || "⚠️ Sorry, I didn’t understand that."
     });
 
   } catch (error) {

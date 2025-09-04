@@ -780,7 +780,7 @@ body.light-theme {
 
 .timeline-content:hover {
   transform: translateY(-8px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 8px 24px rgba(85, 83, 223, 0.18);
 }
 
 .timeline-content h3 {
@@ -1080,8 +1080,7 @@ body.light-theme {
 .work__title {
   font-size: var(--normal-font-size);
   font-weight: var(--font-medium);
-  margin-bottom: 0.25rem;
-  
+  margin-bottom: 0;
 }
 
 .work__button {
