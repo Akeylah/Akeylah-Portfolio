@@ -1,0 +1,368 @@
+html:
+<!-- ================= CHATBOX WRAPPER ================= -->
+<div id="chatboxWrapper">
+  <!-- Floating Chat Button -->
+  <div id="chat-toggle" class="chat-toggle">
+    <img src="./assets/img/chat-xxl-removebg-preview.png" alt="Chat Icon">
+  </div>
+
+  <!-- Chatbox -->
+  <div id="chatbox" class="chatbox hidden">
+    <!-- Header -->
+    <div class="chat-header">
+      <img src="./assets/img/download__4_-removebg-preview.png" alt="Avatar" class="chat-avatar">
+      <div class="chat-info">
+        <h4 class="chat-name">Akeylah's Assistant</h4>
+        <p class="chat-subtitle">AI Chat</p>
+      </div>
+      <button id="chat-close" class="chat-close">✖</button>
+    </div>
+
+    <!-- Messages Area -->
+    <div class="chat-messages" id="chat-messages">
+      <div class="message bot">
+        <span>👋 Hey there! You can click a button below ⬇️ or just type in the chat box.</span>
+        <div class="meta">19:09 ✓✓</div>
+      </div>
+    </div>
+
+    <!-- Starter Options -->
+    <div class="starter-options">
+      <div class="btn-row">
+        <button class="starter-btn" data-option="skills">💻 Skills</button>
+        <button class="starter-btn" data-option="joke">😂 Joke</button>
+      </div>
+      <div class="btn-row">
+        <button class="starter-btn" data-option="hobbies">🎨 Hobbies</button>
+        <button class="starter-btn" data-option="career">🚀 Career Goals</button>
+      </div>
+      <div class="btn-row">
+        <button class="starter-btn" data-option="funfact">✨ Fun Fact</button>
+        <button class="starter-btn" data-option="tech">🛠️ How I Built This</button>
+      </div>
+      <div class="btn-row">
+        <button class="starter-btn" data-option="inspiration">🌟 Inspiration</button>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="chat-input">
+      <input type="text" id="chatMessage" placeholder="Type message...">
+      <button id="sendMessage">Send</button>
+    </div>
+  </div>
+</div>
+-->
+
+
+
+
+
+js:const chatToggle = document.getElementById("chat-toggle");
+const chatbox = document.getElementById("chatbox");
+const sendBtn = document.getElementById("sendMessage");
+const input = document.getElementById("chatMessage");
+const messages = document.querySelector(".chat-messages");
+const starterOptions = document.querySelector(".starter-options");
+
+// --- API base (local vs Codespaces) ---
+const API_BASE =
+  window.location.hostname.includes("github.dev") ||
+  window.location.hostname.includes("app.github.dev")
+    ? "https://fuzzy-invention-wpjrx7x6jx5hg694-3000.app.github.dev" // ✅ your server
+    : "http://localhost:3000";
+
+// Toggle chatbox
+chatToggle.addEventListener("click", () => {
+  chatbox.classList.toggle("hidden");
+});
+
+// Close chatbox
+const chatClose = document.getElementById("chat-close");
+chatClose.addEventListener("click", () => {
+  chatbox.classList.add("hidden");
+});
+
+// Send message on button click or Enter
+sendBtn.addEventListener("click", () => {
+  if (input.value.trim() !== "") {
+    sendMessage(input.value.trim());
+    input.value = "";
+  }
+});
+
+input.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    if (input.value.trim() !== "") {
+      sendMessage(input.value.trim());
+      input.value = "";
+    }
+  }
+});
+
+// --- Send message to backend ---
+async function sendMessage(message) {
+  appendMessage(message, "user");
+
+  // Show typing indicator
+  appendMessage("🤖 ...typing", "bot", true);
+
+  try {
+    const response = await fetch(`${API_BASE}/api/chat`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message }),
+    });
+
+    const data = await response.json();
+
+    removeTypingIndicator();
+    appendMessage(data.reply || "⚠️ No reply from server", "bot");
+  } catch (err) {
+    console.error("Chat error:", err);
+    removeTypingIndicator();
+    appendMessage("⚠️ Sorry, something went wrong with the AI server.", "bot");
+  }
+}
+
+// --- Helpers ---
+function appendMessage(text, sender, typing = false) {
+  const msgDiv = document.createElement("div");
+  msgDiv.classList.add("message", sender);
+  if (typing) msgDiv.classList.add("typing");
+
+  msgDiv.innerHTML = `
+    <span>${text}</span>
+    <div class="meta">${getTime()} ✓✓</div>
+  `;
+  messages.appendChild(msgDiv);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function removeTypingIndicator() {
+  const typing = messages.querySelector(".message.bot.typing");
+  if (typing) typing.remove();
+}
+
+function getTime() {
+  const now = new Date();
+  let hours = now.getHours();
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+  const ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12 || 12;
+  return `${hours}:${minutes} ${ampm}`;
+}
+
+// --- Starter buttons ---
+if (starterOptions) {
+  starterOptions.addEventListener("click", function (e) {
+    if (e.target.classList.contains("starter-btn")) {
+      const option = e.target.textContent;
+      appendMessage(option, "user");
+      sendMessage(option);
+    }
+  });
+}
+
+
+
+
+
+
+
+
+
+css:.chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #9d8cff; /* primary purple */
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 25px #6472f366;
+  transition: transform 0.2s;
+  z-index: 1200;
+  overflow: hidden;  /* ensures image doesn’t spill outside */
+}
+
+.chat-toggle img {
+  width: 60%;   /* adjust as needed */
+  height: 60%;
+  object-fit: contain; /* keeps aspect ratio */
+}
+
+.chat-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Chatbox */
+.chatbox {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 380px;
+  height: 520px;
+  max-height: 80vh;
+  background: #33395cb6; /* dark navy */
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(211, 127, 245, 0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1100;
+  transition: all 0.3s ease;
+}
+.chatbox.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Header */
+.chat-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #0d1026;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.chat-avatar {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+}
+.chat-info {
+  flex-grow: 1;
+}
+.chat-name {
+  margin: 0;
+  font-size: 16px;
+  color: white;
+}
+.chat-subtitle {
+  margin: 0;
+  font-size: 12px;
+  color: #9d8cff;
+}
+
+.chat-close {
+  background: none;
+  border: none;
+  color: #fff; /* adjust to your header text color */
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: auto;
+  transition: color 0.2s ease;
+}
+
+.chat-close:hover {
+  color: #ff6b6b; /* highlight on hover */
+}
+
+/* Messages */
+.chat-messages {
+  height: calc(100% - 150px);
+  flex-grow: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+.message {
+  margin-bottom: 12px;
+  max-width: 80%;
+  padding: 10px;
+  border-radius: 15px;
+  line-height: 1.4;
+  font-size: 14px;
+  position: relative;
+}
+.message.bot {
+  background: #1c203d;
+  color: white;
+  border-bottom-left-radius: 5px;
+}
+.message.user {
+  background: #5a4ca8;
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 5px;
+}
+.message .meta {
+  font-size: 10px;
+  color: #ccc;
+  margin-top: 4px;
+  text-align: right;
+}
+
+/* Input */
+.chat-input {
+    padding: 10px;
+  display: flex;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  background: #0d1026;
+}
+.chat-input input {
+  flex-grow: 1;
+  border: none;
+  padding: 12px;
+  background: transparent;
+  color: white;
+  font-size: 14px;
+}
+.chat-input input::placeholder {
+  color: #aaa;
+}
+.chat-input button {
+  background: #9d8cff;
+  border: none;
+  padding: 0 15px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.chat-input button:hover {
+  background: #7f6dff;
+}
+
+
+.starter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem; /* space between rows */
+  margin: 10px 0;
+}
+
+.btn-row {
+  display: flex;
+  gap: 0.6rem; /* space between buttons in same row */
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.starter-btn {
+  background-color: #7c4dff; /* match your theme */
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.starter-btn:hover {
+  background: #7f6dff; /* darker purple */
+  transform: scale(1.05);
+}
+
+.starter-btn:active {
+  transform: scale(0.95);
+}
