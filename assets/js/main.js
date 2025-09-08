@@ -65,6 +65,8 @@ workLinks.forEach((wl) => {
   });
 });
 
+
+
 /*=============== SWIPER TESTIMONIAL ===============*/
 
 let swiperTestimonial = new Swiper(".testimonial__container", {
@@ -312,6 +314,10 @@ document.getElementById("contactForm").addEventListener("submit", async function
     msg.style.color = "red";
   }
 });
+
+
+
+
 
 
 
