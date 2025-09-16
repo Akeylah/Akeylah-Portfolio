@@ -42,7 +42,7 @@ modalClose.forEach((mc) => {
 
 let mixer = mixitup(".work__container", {
   selectors: {
-    target: ".work__card",
+    target: ".grid .work__card"
   },
   animation: {
     duration: 300,
