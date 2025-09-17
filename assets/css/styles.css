@@ -862,45 +862,70 @@ body.light-theme {
 }
 
 
-/*=============== WORK ===============*/
-
+/*=============== WORK Section ===============*/
 .work__container {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr)) !important; 
-  gap: 1.5rem;
   max-width: 1400px;
   margin: 0 auto;
   padding: 1rem;
+  perspective: 1000px; /* Enables 3D depth effect */
 }
 
-
-.work__item {
-  cursor: pointer;
-  color: var(--title-color);
-  padding: 0.25rem 0.75rem;
-  font-weight: var(--font-medium);
-  border-radius: 0.5rem;
-}
-
+/* Base card style */
 .work__card {
+  min-height: 500px;
   background-color: var(--container-color);
   padding: 1rem;
   border-radius: 1rem;
+  transition: all 0.5s ease;
+  z-index: 1;
+  opacity: 1;
+  filter: none;
+  transform: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Active center slide */
+.swiper-slide-active {
+  opacity: 1;
+  transform: scale(1.05) translateY(-20px);
+  z-index: 10;
+}
+
+/* Neighboring slides */
+.swiper-slide-prev,
+.swiper-slide-next {
+  opacity: 0.8;
+  transform: scale(0.95);
+  z-index: 5;
+}
+
+/*=============== IMAGE CONTAINER ===============*/
+.work__img-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
 .work__img {
-  width: 100%;            /* take full width of parent */
-  height: 200px;          /* fixed height for all images */
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
   border-radius: 1rem;
   margin-bottom: 0.75rem;
-  object-fit: cover;      /* crop nicely instead of stretching */
-  display: block;         /* removes bottom inline gap */
+  display: block;
 }
 
 .work__title {
   font-size: var(--normal-font-size);
   font-weight: var(--font-medium);
   margin-bottom: 0;
+  text-align: center;
 }
 
 .work__button {
@@ -911,6 +936,7 @@ body.light-theme {
   align-items: center;
   column-gap: 0.25rem;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .work__button:hover .work__icon {
@@ -922,27 +948,13 @@ body.light-theme {
   transition: 0.4s;
 }
 
-/* Active item work*/
-.active-work {
-  background-color: var(--first-color);
-  color: var(--body-color);
-}
-
-/* Container for image + overlay */
-.work__img-container {
-  position: relative;
-  border-radius: 1rem;
-  overflow: hidden;
-}
-
-/* Overlay hidden by default */
 .work__overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.65); /* semi-transparent black */
+  background: rgba(0, 0, 0, 0.65);
   color: #fff;
   display: flex;
   align-items: center;
@@ -954,27 +966,25 @@ body.light-theme {
   transition: opacity 0.4s ease;
 }
 
-/* Show overlay when hovering on the container */
 .work__img-container:hover .work__overlay {
   opacity: 1;
 }
 
 .section__description {
-  max-width: 700px;            /* keeps text nicely centered */
-  margin: 0 auto 2rem auto;    /* center & add space below */
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
   text-align: center;
   font-size: var(--small-font-size);
-  color: var(--text-color-light); /* softer gray text */
-  line-height: 1.6;            /* more readable */
+  color: var(--text-color-light);
+  line-height: 1.6;
 }
 
-/* Back Button Container */
+/*=============== BACK BUTTON ===============*/
 .back-button-container {
   text-align: center;
   margin: 2rem 0;
 }
 
-/* Back Button Style */
 .back-button {
   position: absolute;
   top: 1rem;
@@ -990,11 +1000,11 @@ body.light-theme {
   border-radius: 0.75rem;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
-  z-index: 999; /* always on top */
+  z-index: 999;
 }
 
 .back-button:hover {
-  background: var(--first-color-alt); /* Optional darker hover color */
+  background: var(--first-color-alt);
   box-shadow: 0 0 15px var(--first-color), 0 0 30px var(--first-color);
   transform: translateY(-2px);
 }
@@ -1002,6 +1012,20 @@ body.light-theme {
 .back-button i {
   font-size: 1rem;
 }
+
+/*=============== SWIPER NAVIGATION & PAGINATION ===============*/
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--first-color);
+}
+
+
+.swiper-pagination-bullet {
+  background-color: var(--first-color);
+  bottom: 20px; 
+
+}
+
 
 
 
