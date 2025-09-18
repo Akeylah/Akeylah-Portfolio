@@ -64,6 +64,38 @@ const swiperWork = new Swiper('.work__container', {
 });
 
 
+/* ======== SWIPE AUDIO ======== */
+const swipeAudio = document.getElementById('swipeAudio');
+let isWorkSectionVisible = false;
+
+// Detect when Work section is visible
+const workSection = document.getElementById('work');
+const workObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      isWorkSectionVisible = entry.isIntersecting; // true when visible
+      if (!isWorkSectionVisible) {
+        // Stop the audio when leaving the section
+        swipeAudio.pause();
+        swipeAudio.currentTime = 0;
+      }
+    });
+  },
+  { threshold: 0.3 } // Trigger when 30% of the section is visible
+);
+workObserver.observe(workSection);
+
+// Play sound ONLY if Work section is visible
+swiperWork.on('slideChange', () => {
+  if (isWorkSectionVisible) {
+    swipeAudio.currentTime = 0; 
+    swipeAudio.play().catch(err => {
+      console.warn("Audio blocked until user interacts with the page:", err);
+    });
+  }
+});
+
+
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 const sections = document.querySelectorAll("section[id]");
 const sectionLinks = {};
