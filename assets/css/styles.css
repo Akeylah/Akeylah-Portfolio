@@ -1889,3 +1889,120 @@ justify-content: center;
     border-radius: 0.5rem;
   }
 }
+
+
+
+/* For tablets and smaller devices */
+@media screen and (max-width: 768px) {
+  /* Inner page grid responsiveness */
+  .work__container.container.grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .work__card {
+    min-height: auto;
+    margin: 0 1rem;
+  }
+  
+  /* Mobile header/footer adjustments */
+  header.inner-header {
+    padding: 1rem 0.5rem;
+  }
+  
+  header.inner-header .section__title {
+    font-size: var(--h1-font-size);
+  }
+  
+  footer.inner-footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .back-button-container, 
+  .next-button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Text readability */
+  .section__description {
+    font-size: var(--normal-font-size);
+    padding: 0 1rem;
+    line-height: 1.6;
+  }
+  
+  .work__title {
+    font-size: var(--h3-font-size);
+  }
+  
+  /* Image/Video responsiveness */
+  .work__img {
+    height: 200px;
+  }
+  
+  .work__overlay p {
+    font-size: var(--small-font-size);
+    padding: 0.5rem;
+  }
+  
+  /* Touch-friendly sizing */
+  .work__button, 
+  .back-button, 
+  .next-button {
+    min-height: 44px;
+    padding: 0.75rem 1.25rem;
+  }
+  
+  /* Mobile navigation */
+  footer.inner-footer {
+    position: sticky;
+    bottom: 0;
+    background: var(--body-color);
+    z-index: 100;
+  }
+  
+  /* Optimize animations */
+  .work__card {
+    transform: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .work__card:hover {
+    transform: none;
+  }
+}
+
+/* For very small phones */
+@media screen and (max-width: 480px) {
+  header.inner-header .section__title {
+    font-size: var(--h2-font-size);
+  }
+  
+  .work__img {
+    height: 180px;
+  }
+  
+  .back-button, 
+  .next-button {
+    font-size: var(--small-font-size);
+    padding: 0.6rem 1rem;
+  }
+  
+  .section__description {
+    font-size: var(--small-font-size);
+  }
+}
+
+/* For landscape orientation on mobile */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .work__card {
+    min-height: 300px;
+  }
+  
+  .work__img {
+    height: 150px;
+  }
+}
