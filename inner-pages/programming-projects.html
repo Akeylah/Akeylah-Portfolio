@@ -4,38 +4,132 @@
   <!--=============== PROGRAMMING PROJECTS ===============-->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!--=============== FAVICON ===============-->
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon_io/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon_io/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon_io/favicon-16x16.png">
-<link rel="manifest" href="../assets/favicon_io/site.webmanifest">
-<link rel="shortcut icon" href="../assets/favicon_io/favicon.ico">
 
-<!-- Optional for Android -->
-<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon_io/android-chrome-192x192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="../assets/favicon_io/android-chrome-512x512.png">
+  <!--=============== FAVICON ===============-->
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="../assets/favicon_io/site.webmanifest">
+  <link rel="shortcut icon" href="../assets/favicon_io/favicon.ico">
 
-  <title>Programming Works</title>
+  <!-- Optional for Android -->
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon_io/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/favicon_io/android-chrome-512x512.png">
+
+  <title>Programming Work</title>
 
   <link rel="stylesheet" href="/assets/css/styles.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- Internal CSS for page-specific tweaks -->
+  <style>
+    /*=============== HEADER ===============*/
+    header.inner-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    header.inner-header .section__subtitle {
+      display: block;
+      font-size: var(--small-font-size);
+      color: var(--first-color-alt);
+      margin-top: 2rem;   /* space from top */
+      margin-bottom: 0.5rem;
+    }
+
+    header.inner-header .section__title {
+      font-size: var(--h2-font-size);
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .back-button-container {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+  /*=============== FOOTER ===============*/
+footer.inner-footer {
+  display: flex;
+  justify-content: space-between; /* Puts back button left and next button right */
+  align-items: center; /* Centers vertically */
+  margin-top: 3rem;
+}
+
+.back-button-container {
+  /* Remove text-align and use flex for the container */
+  display: flex;
+  align-items: center;
+}
+
+.next-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #d0d0ebe0;
+  background-color: var(--first-color);
+  border-radius: 0.75rem;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #d0d0ebe0;
+  background-color: var(--first-color);
+  border-radius: 0.75rem;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.next-button:hover,
+.back-button:hover {
+  background: var(--first-color-alt);
+  box-shadow: 0 0 15px var(--first-color), 0 0 30px var(--first-color);
+  transform: translateY(-2px);
+}
+
+
+    /*=============== ANIMATIONS ===============*/
+    .work__card {
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.6s ease-out;
+    }
+
+    .work__card.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .work__card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
 <body>
 
-  
-  <!-- Back Button -->
-<div class="back-button-container">
- <a href="../index.html#work" class="back-button">
-  <i class='bx bx-left-arrow-alt'></i> Back to Home
-</a>
-</div>
-
+  <!-- Header -->
+  <header class="inner-header">
+    <span class="section__subtitle">Tech Playground</span>
+    <h2 class="section__title">Programming Projects</h2>
+   
+  </header>
 
   <section class="work section" id="programming">
-    <span class="section__subtitle">Programming</span>
-    <h2 class="section__title">My Programming Projects</h2>
     <p class="section__description">
-      A showcase of my coding projects, built with languages like C++, Python, and JavaScript.
+      Welcome to the command center! This is my digital playground, below is a combination of personal and school projects built with blood, sweat, and debugging (mostly the debugging).
+
     </p>
 
         <div class="work__container container grid">
@@ -173,5 +267,31 @@
     </div>
   </section>
 
+  <footer class="inner-footer">
+
+    <div class="back-button-container">
+      <a href="../index.html#work" class="back-button">
+        <i class='bx bx-left-arrow-alt'></i> Back Home
+      </a>
+    </div>
+
+    <a href="../inner-pages/web-design.html" class="next-button">
+      Next Section <i class='bx bx-right-arrow-alt'></i>
+    </a>
+  </footer>
+ <script>
+    const cards = document.querySelectorAll('.work__card');
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if(cardTop < triggerBottom) {
+          card.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
 </body>
 </html>

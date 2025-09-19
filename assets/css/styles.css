@@ -871,9 +871,9 @@ body.light-theme {
   margin-bottom: 2rem;
 }
 .work {
-  background: linear-gradient(-45deg, #0b111e, rgba(11, 17, 30), #24043f, #04025852);
+  background: linear-gradient(-45deg, rgb(28, 18, 29), rgba(11, 17, 30), #130022, #04027452);
   background-size: 400% 400%;
-  animation: gradientMove 15s ease infinite;
+  animation: gradientMove 10s ease infinite;
   padding: 4rem 0 6rem 0;
 }
 
@@ -908,6 +908,7 @@ body.light-theme {
 
 .swiper-slide {
   opacity: 0.8;
+    filter: blur(4px);
   transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
 
@@ -922,6 +923,8 @@ body.light-theme {
 
 .swiper-slide-active {
   opacity: 1;
+    filter: blur(0);
+
 }
 
 /*=============== IMAGE CONTAINER ===============*/
@@ -941,6 +944,7 @@ body.light-theme {
   border-radius: 1rem;
   margin-bottom: 0.75rem;
   display: block;
+  pointer-events: none;
 }
 
 .work__title {
@@ -994,13 +998,27 @@ body.light-theme {
 
 .section__description {
   max-width: 700px;
-  margin: 0 auto 2rem auto;
-  text-align: center;
+ margin: 1rem auto 2rem auto;
+   text-align: center;
   font-size: var(--small-font-size);
-  color: var(--text-color-light);
+  color: rgba(255, 255, 255, 0.877);
   line-height: 1.6;
+/* Animation */
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 0.3s; 
 }
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: none;
+  }
 
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
 /*=============== BACK BUTTON ===============*/
 .back-button-container {
   text-align: center;
@@ -1008,22 +1026,18 @@ body.light-theme {
 }
 
 .back-button {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
   padding: 0.5rem 1rem;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #ffffff8c;
-  background-color: var(--first-color);
-  border-radius: 0.75rem;
+  color: #d0d0ebe0;
+  border-radius: 0.5rem;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
-  z-index: 999;
 }
+
 
 .back-button:hover {
   background: var(--first-color-alt);

@@ -44,7 +44,7 @@ const swiperWork = new Swiper('.work__container', {
   grabCursor: true,
   observer: true,
   observeParents: true,
-  autoplay: { delay: 2600, disableOnInteraction: false },
+  autoplay: { delay: 3600, disableOnInteraction: false },
   navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
   pagination: { el: '.swiper-pagination', clickable: true },
   effect: 'coverflow',
@@ -64,31 +64,49 @@ const swiperWork = new Swiper('.work__container', {
 });
 
 
+/* ======== Work Section Video ======== */
+const videos = document.querySelectorAll('.work__img');
+
+videos.forEach(video => {
+  video.addEventListener('mouseenter', () => video.play());
+  video.addEventListener('mouseleave', () => video.pause());
+});
+
+
 /* ======== SWIPE AUDIO ======== */
 const swipeAudio = document.getElementById('swipeAudio');
 let isWorkSectionVisible = false;
 
 // Detect when Work section is visible
 const workSection = document.getElementById('work');
+
 const workObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach(entry => {
-      isWorkSectionVisible = entry.isIntersecting; // true when visible
-      if (!isWorkSectionVisible) {
-        // Stop the audio when leaving the section
+      if (entry.isIntersecting) {
+        // Section is visible → play audio
+        isWorkSectionVisible = true;
+        swipeAudio.currentTime = 0;
+        swipeAudio.play().catch(err => {
+          console.warn("Audio blocked until user interacts with the page:", err);
+        });
+      } else {
+        // Section is NOT visible → stop audio
+        isWorkSectionVisible = false;
         swipeAudio.pause();
         swipeAudio.currentTime = 0;
       }
     });
   },
-  { threshold: 0.3 } // Trigger when 30% of the section is visible
+  { threshold: 0.3 } // 30% of section must be visible to trigger
 );
+
 workObserver.observe(workSection);
 
-// Play sound ONLY if Work section is visible
+// OPTIONAL: also play sound when slide changes, but ONLY if section is visible
 swiperWork.on('slideChange', () => {
   if (isWorkSectionVisible) {
-    swipeAudio.currentTime = 0; 
+    swipeAudio.currentTime = 0;
     swipeAudio.play().catch(err => {
       console.warn("Audio blocked until user interacts with the page:", err);
     });
